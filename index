@@ -1,0 +1,2426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Skincare Shelf</title>
+    
+    <!-- Home Screen / Web App Meta Tags (iOS Safari & Android Chrome) -->
+    <meta name="application-name" content="Skincare Shelf">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Skincare Shelf">
+    <meta name="theme-color" content="#FAF7F2">
+
+    <!-- App Icons & Dynamic Web App Manifest Placeholders -->
+    <link id="apple-touch-icon" rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='112' fill='%23FAF7F2'/%3E%3Cpath d='M92 54 H238 L220 398 H110 Z' fill='%23A2B36E'/%3E%3Cpath d='M92 54 H238 L236 86 H94 Z' fill='%23F4E7DA'/%3E%3Crect x='124' y='118' width='82' height='44' rx='4' fill='%23F4E7DA'/%3E%3Crect x='132' y='184' width='66' height='18' rx='9' fill='%23F4E7DA'/%3E%3Cpath d='M110 398 H220 L218 452 H112 Z' fill='%23F4E7DA'/%3E%3Cpath d='M144 452 V434 C144 426 150 420 158 420 H172 C180 420 186 426 186 434 V452 Z' fill='%2399AA65'/%3E%3Cpath d='M112 452 H218 C218 468 205 480 189 480 H141 C125 480 112 468 112 452 Z' fill='%23ACBD78'/%3E%3Cpath d='M206 284 C206 254 226 238 258 234 C290 230 326 218 344 198 C378 214 396 244 396 284 Z' fill='%23F4E7DA'/%3E%3Crect x='206' y='284' width='190' height='26' fill='%23EEAC22'/%3E%3Cpath d='M186 334 C186 318 198 310 214 310 H388 C404 310 416 318 416 334 V340 H186 Z' fill='%23DF9D19'/%3E%3Crect x='186' y='340' width='230' height='108' fill='%23EEAC22'/%3E%3Cellipse cx='301' cy='394' rx='48' ry='23' fill='%23F4E7DA'/%3E%3Cpath d='M186 448 H416 C416 467 401 480 382 480 H220 C201 480 186 467 186 448 Z' fill='%23DF9D19'/%3E%3C/svg%3E">
+    <link id="app-favicon-png" rel="icon" type="image/png" sizes="192x192" href="">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='112' fill='%23FAF7F2'/%3E%3Cpath d='M92 54 H238 L220 398 H110 Z' fill='%23A2B36E'/%3E%3Cpath d='M92 54 H238 L236 86 H94 Z' fill='%23F4E7DA'/%3E%3Crect x='124' y='118' width='82' height='44' rx='4' fill='%23F4E7DA'/%3E%3Crect x='132' y='184' width='66' height='18' rx='9' fill='%23F4E7DA'/%3E%3Cpath d='M110 398 H220 L218 452 H112 Z' fill='%23F4E7DA'/%3E%3Cpath d='M144 452 V434 C144 426 150 420 158 420 H172 C180 420 186 426 186 434 V452 Z' fill='%2399AA65'/%3E%3Cpath d='M112 452 H218 C218 468 205 480 189 480 H141 C125 480 112 468 112 452 Z' fill='%23ACBD78'/%3E%3Cpath d='M206 284 C206 254 226 238 258 234 C290 230 326 218 344 198 C378 214 396 244 396 284 Z' fill='%23F4E7DA'/%3E%3Crect x='206' y='284' width='190' height='26' fill='%23EEAC22'/%3E%3Cpath d='M186 334 C186 318 198 310 214 310 H388 C404 310 416 318 416 334 V340 H186 Z' fill='%23DF9D19'/%3E%3Crect x='186' y='340' width='230' height='108' fill='%23EEAC22'/%3E%3Cellipse cx='301' cy='394' rx='48' ry='23' fill='%23F4E7DA'/%3E%3Cpath d='M186 448 H416 C416 467 401 480 382 480 H220 C201 480 186 467 186 448 Z' fill='%23DF9D19'/%3E%3C/svg%3E">
+    <link id="app-manifest" rel="manifest" href="">
+    
+    <!-- Google Fonts: Plus Jakarta Sans & Fraunces -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Custom Apothecary Color Tokens -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Fraunces"', 'serif'],
+                    },
+                    colors: {
+                        alabaster: '#FAF8F5',
+                        cream: {
+                            50: '#FDFBF7',
+                            100: '#F5F1E9',
+                            200: '#EAE3D5',
+                        },
+                        sage: {
+                            50: '#F1F6F3',
+                            100: '#DFECE4',
+                            200: '#C0D8C9',
+                            500: '#5C8F6C',
+                            600: '#4A7C59',
+                            700: '#396145',
+                        },
+                        terracotta: {
+                            50: '#FDF5F2',
+                            100: '#FAE6DF',
+                            200: '#F3C8B9',
+                            500: '#C86D51',
+                            600: '#B0583D',
+                        },
+                        amber: {
+                            50: '#FFFBEB',
+                            100: '#FEF3C7',
+                            600: '#D97706',
+                            700: '#B45309',
+                        }
+                    },
+                    boxShadow: {
+                        'card': '0 2px 12px -2px rgba(57, 97, 69, 0.06)',
+                        'soft': '0 6px 24px -4px rgba(57, 97, 69, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #EFECE6;
+            -webkit-tap-highlight-color: transparent;
+            overscroll-behavior-y: none;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .botanical-dots {
+            background-image: radial-gradient(#C0D8C9 0.85px, transparent 0.85px);
+            background-size: 14px 14px;
+        }
+    </style>
+</head>
+<body class="text-stone-800 antialiased selection:bg-sage-200 selection:text-sage-700">
+
+    <!-- Mobile Viewport Container (Max-width 480px centered on desktop, full bleed on mobile) -->
+    <div class="max-w-[480px] mx-auto min-h-screen bg-alabaster shadow-2xl relative flex flex-col pb-10 border-x border-cream-200">
+        
+        <!-- Sticky Top Header -->
+        <header class="sticky top-0 z-20 bg-alabaster/95 backdrop-blur-md border-b border-cream-200 px-5 pt-4 pb-3">
+            <div class="flex items-center justify-between gap-2">
+                <div class="flex items-center gap-2.5 min-w-0">
+                    <div class="w-10 h-10 rounded-2xl bg-[#FAF7F2] border border-cream-200 flex items-center justify-center p-1 shadow-2xs shrink-0">
+                        <svg viewBox="0 0 512 512" class="w-full h-full" aria-hidden="true">
+                            <!-- Sage Green Squeeze Tube -->
+                            <path d="M92 54 H238 L220 398 H110 Z" fill="#A2B36E"/>
+                            <path d="M92 54 H238 L236 86 H94 Z" fill="#F4E7DA"/>
+                            <rect x="124" y="118" width="82" height="44" rx="4" fill="#F4E7DA"/>
+                            <rect x="132" y="184" width="66" height="18" rx="9" fill="#F4E7DA"/>
+                            <path d="M110 398 H220 L218 452 H112 Z" fill="#F4E7DA"/>
+                            <path d="M144 452 V434 C144 426 150 420 158 420 H172 C180 420 186 426 186 434 V452 Z" fill="#99AA65"/>
+                            <path d="M112 452 H218 C218 468 205 480 189 480 H141 C125 480 112 468 112 452 Z" fill="#ACBD78"/>
+                            <!-- Golden-Amber Cream Jar -->
+                            <path d="M206 284 C206 254 226 238 258 234 C290 230 326 218 344 198 C378 214 396 244 396 284 Z" fill="#F4E7DA"/>
+                            <rect x="206" y="284" width="190" height="26" fill="#EEAC22"/>
+                            <path d="M186 334 C186 318 198 310 214 310 H388 C404 310 416 318 416 334 V340 H186 Z" fill="#DF9D19"/>
+                            <rect x="186" y="340" width="230" height="108" fill="#EEAC22"/>
+                            <ellipse cx="301" cy="394" rx="48" ry="23" fill="#F4E7DA"/>
+                            <path d="M186 448 H416 C416 467 401 480 382 480 H220 C201 480 186 467 186 448 Z" fill="#DF9D19"/>
+                        </svg>
+                    </div>
+                    <div class="min-w-0">
+                        <h1 class="font-serif text-xl font-semibold text-sage-700 tracking-tight leading-none truncate">Skincare Shelf</h1>
+                    </div>
+                </div>
+                
+                <!-- Header Actions: Backup & Restore -->
+                <div class="flex items-center gap-2 shrink-0">
+                    <button onclick="openSettingsModal()" aria-label="Backup and Restore" title="Backup & Restore" class="w-9 h-9 rounded-full bg-white border border-cream-200 flex items-center justify-center text-stone-600 hover:bg-sage-50 hover:text-sage-700 active:scale-95 transition-all shadow-2xs">
+                        <i class="ph ph-cloud-arrow-up text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 px-4 pt-4">
+
+            <!-- =====================================================================
+                 IN STORAGE (INVENTORY)
+                 ===================================================================== -->
+            <section id="tab-storage" class="space-y-4">
+                
+                <!-- Total Product Stored Overview Card -->
+                <button onclick="applyQuickFilter('IN_STORE')" class="w-full bg-white p-4 rounded-2xl border border-cream-200 shadow-card flex items-center justify-between text-left hover:border-sage-300 active:scale-[0.99] transition-all">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-2xl bg-sage-50 border border-sage-200/70 text-sage-600 flex items-center justify-center shrink-0">
+                            <i class="ph-fill ph-package text-xl"></i>
+                        </span>
+                        <div class="text-sm font-bold text-stone-700">Total Product Stored</div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-2xl font-extrabold text-sage-700 leading-none" id="metric-total-entries">0</div>
+                    </div>
+                </button>
+
+                <!-- Add New Purchase & Statistics Action Row -->
+                <div class="flex items-center gap-2">
+                    <button onclick="openPurchaseModal()" class="flex-1 py-3 px-4 rounded-2xl bg-sage-600 hover:bg-sage-700 text-white font-semibold text-sm shadow-soft flex items-center justify-center gap-2 active:scale-[0.99] transition-all">
+                        <i class="ph-bold ph-plus-circle text-lg"></i>
+                        <span>Add New Purchase</span>
+                    </button>
+                    <button onclick="openStatsModal()" aria-label="Storage Statistics" title="Storage Statistics" class="w-12 h-[44px] rounded-2xl bg-white border border-cream-200 hover:border-sage-400 hover:bg-sage-50 text-sage-700 flex items-center justify-center shadow-card active:scale-95 transition-all shrink-0">
+                        <i class="ph-fill ph-chart-bar text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="relative">
+                    <i class="ph ph-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400 text-base"></i>
+                    <input 
+                        type="text" 
+                        id="storage-search" 
+                        oninput="handleStorageSearch(this.value)"
+                        placeholder="Search brand, product name, or type..." 
+                        class="w-full pl-10 pr-9 py-2.5 bg-white border border-cream-200 rounded-2xl text-sm text-stone-800 placeholder-stone-400 focus:outline-none focus:border-sage-500 focus:ring-2 focus:ring-sage-500/15 transition-all shadow-2xs"
+                    >
+                    <button id="storage-clear-search" onclick="clearStorageSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600">
+                        <i class="ph-fill ph-x-circle text-base"></i>
+                    </button>
+                </div>
+
+                <!-- Status & Type Filter Controls -->
+                <div class="space-y-2">
+                    <div class="flex items-center gap-2 pb-0.5" id="status-pills">
+                        <div class="flex-1 py-2.5 px-4 rounded-2xl text-xs font-semibold bg-sage-600 text-white shadow-2xs flex items-center justify-center gap-1.5">
+                            <i class="ph-fill ph-package text-sm"></i>
+                            <span id="in-store-header-pill">In Store</span>
+                        </div>
+                        <button id="type-filter-toggle-btn" type="button" onclick="toggleTypeFilterDrawer()" aria-label="Filter by product type" class="py-2.5 px-4 rounded-2xl text-xs font-semibold bg-white text-stone-600 border border-cream-200 hover:bg-cream-100 flex items-center justify-center gap-1.5 shrink-0 transition-all">
+                            <i class="ph-bold ph-funnel text-sm"></i>
+                            <span id="type-filter-btn-label">Filter</span>
+                        </button>
+                    </div>
+
+                    <div id="type-filter-drawer" class="hidden bg-white p-3 rounded-2xl border border-cream-200 shadow-card">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-[11px] font-bold uppercase tracking-wider text-stone-400">Filter by Type</span>
+                            <button type="button" onclick="setStorageTypeFilter('ALL')" class="text-[11px] font-semibold text-sage-700 hover:underline">All Types</button>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5" id="type-pills">
+                            <!-- Rendered dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- List Header -->
+                <div class="flex items-center justify-between px-1">
+                    <span class="text-xs font-bold uppercase tracking-wider text-stone-400" id="storage-count-label">In Storage</span>
+                    <div class="flex items-center gap-2">
+                        <button id="storage-reset-btn" onclick="resetStorageFilters()" class="hidden text-xs font-semibold text-stone-500 hover:underline">Reset filters</button>
+                        <button id="storage-sort-btn" type="button" onclick="toggleStorageSort()" class="px-2.5 py-1 rounded-xl bg-white border border-cream-200 hover:border-sage-400 hover:bg-sage-50/60 text-stone-600 text-[11px] font-semibold flex items-center gap-1 shadow-2xs active:scale-95 transition-all">
+                            <i class="ph-bold ph-arrows-down-up text-xs text-sage-600"></i>
+                            <span id="storage-sort-label">Newest</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Storage Product Cards Container -->
+                <div id="storage-list" class="space-y-3 pb-10">
+                    <!-- Product cards injected by JS -->
+                </div>
+            </section>
+
+        </main>
+
+        <!-- =====================================================================
+             MODAL: BACKUP & RESTORE (JSON EXPORT / IMPORT)
+             ===================================================================== -->
+        <div id="settings-modal" class="fixed inset-0 z-50 hidden">
+            <div onclick="closeSettingsModal()" class="absolute inset-0 bg-stone-900/40 backdrop-blur-xs"></div>
+            <div class="absolute bottom-0 left-0 right-0 max-w-[480px] mx-auto bg-alabaster rounded-t-3xl shadow-2xl border-t border-cream-200 p-5 space-y-4">
+                <div class="flex items-center justify-between border-b border-cream-200 pb-3">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-8 h-8 rounded-xl bg-sage-100 text-sage-700 flex items-center justify-center">
+                            <i class="ph-fill ph-database text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-serif text-lg font-semibold text-sage-700 leading-none">Backup & Restore</h3>
+                            <p class="text-[11px] text-stone-500 mt-1">Export or upload JSON storage files</p>
+                        </div>
+                    </div>
+                    <button onclick="closeSettingsModal()" class="w-8 h-8 rounded-full bg-cream-200/80 text-stone-600 flex items-center justify-center">
+                        <i class="ph-bold ph-x text-sm"></i>
+                    </button>
+                </div>
+
+                <p class="text-xs text-stone-500 leading-relaxed">
+                    Download a JSON backup of your current skincare inventory or upload a previously saved JSON file to restore your items.
+                </p>
+
+                <div class="space-y-2.5">
+                    <!-- Export / Download JSON Backup -->
+                    <button onclick="exportStorageJSON()" class="w-full py-3.5 px-4 rounded-2xl bg-sage-600 hover:bg-sage-700 text-white font-semibold text-xs flex items-center justify-between shadow-2xs active:scale-[0.99] transition-all">
+                        <span class="flex items-center gap-2.5">
+                            <i class="ph-bold ph-download-simple text-base"></i>
+                            <span>Download Backup (.json)</span>
+                        </span>
+                        <span id="backup-item-count" class="px-2 py-0.5 rounded-full bg-white/20 text-[10px] font-bold">0 items</span>
+                    </button>
+
+                    <!-- Import / Upload JSON Backup -->
+                    <input type="file" id="json-upload-input" accept=".json,application/json" onchange="handleImportStorageJSON(event)" class="hidden">
+                    <button onclick="triggerImportJSON()" class="w-full py-3.5 px-4 rounded-2xl bg-white border border-cream-200 hover:border-sage-400 hover:bg-sage-50/50 text-stone-700 font-semibold text-xs flex items-center justify-between shadow-2xs active:scale-[0.99] transition-all">
+                        <span class="flex items-center gap-2.5">
+                            <i class="ph-bold ph-upload-simple text-base text-sage-600"></i>
+                            <span>Upload & Restore Backup (.json)</span>
+                        </span>
+                        <i class="ph ph-caret-right text-stone-400"></i>
+                    </button>
+                </div>
+
+                <div class="pt-2 border-t border-cream-200">
+                    <button onclick="resetDemoData()" class="w-full py-2.5 px-4 rounded-xl bg-cream-100 hover:bg-cream-200 text-stone-600 font-semibold text-xs flex items-center justify-center gap-1.5 transition-all">
+                        <i class="ph-bold ph-arrow-counter-clockwise text-sm"></i>
+                        <span>Reset to Sample Demo Data</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- =====================================================================
+             MODAL: STORAGE STATISTICS
+             ===================================================================== -->
+        <div id="stats-modal" class="fixed inset-0 z-50 hidden">
+            <div onclick="closeStatsModal()" class="absolute inset-0 bg-stone-900/40 backdrop-blur-xs"></div>
+            <div class="absolute bottom-0 left-0 right-0 max-w-[480px] mx-auto bg-alabaster rounded-t-3xl shadow-2xl border-t border-cream-200 max-h-[90vh] flex flex-col">
+                <div class="px-5 pt-4 pb-3 border-b border-cream-200 flex items-center justify-between shrink-0">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-8 h-8 rounded-xl bg-sage-100 text-sage-700 flex items-center justify-center">
+                            <i class="ph-fill ph-chart-bar text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-serif text-lg font-semibold text-sage-700 leading-none">Storage Statistics</h3>
+                            <p class="text-[11px] text-stone-500 mt-1">Category breakdown & stock alerts</p>
+                        </div>
+                    </div>
+                    <button onclick="closeStatsModal()" class="w-8 h-8 rounded-full bg-cream-200/80 text-stone-600 flex items-center justify-center">
+                        <i class="ph-bold ph-x text-sm"></i>
+                    </button>
+                </div>
+
+                <div class="p-5 overflow-y-auto space-y-4">
+                    <!-- Expiring Soon Highlight Card -->
+                    <div>
+                        <button type="button" id="stats-card-expiring" onclick="selectStatsDrilldown('EXPIRING')" class="w-full bg-amber-50/80 border border-amber-200 rounded-2xl p-3.5 space-y-1 text-left hover:border-amber-400 active:scale-[0.98] transition-all">
+                            <div class="flex items-center justify-between">
+                                <span class="w-7 h-7 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center">
+                                    <i class="ph-fill ph-hourglass-medium text-base"></i>
+                                </span>
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-amber-700">≤60d</span>
+                            </div>
+                            <div class="text-2xl font-extrabold text-amber-800 pt-1 leading-none" id="stats-expiring-total">0</div>
+                            <div class="flex items-center justify-between text-xs font-medium text-amber-700">
+                                <span class="truncate">Expiring Soon</span>
+                                <i class="ph-bold ph-caret-down text-[11px] shrink-0"></i>
+                            </div>
+                        </button>
+                    </div>
+
+                    <!-- Drilldown List for Expiring Soon -->
+                    <div id="stats-drilldown-panel" class="hidden bg-white rounded-2xl border border-cream-200 p-4 shadow-card space-y-2.5">
+                        <div class="flex items-center justify-between">
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-stone-600" id="stats-drilldown-title">Matching Items</h4>
+                            <button type="button" onclick="selectStatsDrilldown(null)" class="text-[11px] font-semibold text-stone-400 hover:text-stone-600">Hide</button>
+                        </div>
+                        <div id="stats-drilldown-list" class="space-y-2">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Skincare Types Breakdown -->
+                    <div class="bg-white rounded-2xl border border-cream-200 p-4 shadow-card space-y-3">
+                        <div class="flex items-center justify-between">
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-stone-500">Count by Skincare Type</h4>
+                            <span class="text-xs font-bold text-sage-700" id="stats-grand-total">0 total units</span>
+                        </div>
+                        <div id="stats-type-breakdown" class="space-y-2.5">
+                            <!-- Populated dynamically via renderStatsModal() -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- =====================================================================
+             MODAL: NEW PURCHASE ENTRY
+             ===================================================================== -->
+        <div id="purchase-modal" class="fixed inset-0 z-50 hidden">
+            <div onclick="closePurchaseModal()" class="absolute inset-0 bg-stone-900/40 backdrop-blur-xs"></div>
+            <div class="absolute bottom-0 left-0 right-0 max-w-[480px] mx-auto bg-alabaster rounded-t-3xl shadow-2xl border-t border-cream-200 max-h-[92vh] flex flex-col">
+                <div class="px-5 pt-4 pb-3 border-b border-cream-200 flex items-center justify-between">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-8 h-8 rounded-xl bg-sage-100 text-sage-700 flex items-center justify-center">
+                            <i class="ph-fill ph-bag-simple text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-serif text-lg font-semibold text-sage-700 leading-none">New Purchase</h3>
+                            <p class="text-[11px] text-stone-500 mt-1">Record item details into storage</p>
+                        </div>
+                    </div>
+                    <button onclick="closePurchaseModal()" class="w-8 h-8 rounded-full bg-cream-200/80 text-stone-600 flex items-center justify-center">
+                        <i class="ph-bold ph-x text-sm"></i>
+                    </button>
+                </div>
+
+                <form id="purchase-form" onsubmit="handleNewPurchaseSubmit(event)" class="p-5 overflow-y-auto space-y-4">
+                    <!-- Brand Input -->
+                    <div>
+                        <label for="pur-brand" class="block text-xs font-semibold text-stone-600 mb-1">Brand *</label>
+                        <input
+                            type="text"
+                            id="pur-brand"
+                            required
+                            placeholder="e.g., Skin1004, La Roche-Posay, CeraVe"
+                            class="w-full px-3.5 py-2.5 bg-white border border-cream-200 rounded-xl text-sm text-stone-800 placeholder-stone-400 focus:outline-none focus:border-sage-600"
+                        >
+                    </div>
+
+                    <!-- Product Name -->
+                    <div>
+                        <label for="pur-name" class="block text-xs font-semibold text-stone-600 mb-1">Product Name *</label>
+                        <input
+                            type="text"
+                            id="pur-name"
+                            required
+                            placeholder="e.g., Madagascar Centella Ampoule"
+                            class="w-full px-3.5 py-2.5 bg-white border border-cream-200 rounded-xl text-sm text-stone-800 placeholder-stone-400 focus:outline-none focus:border-sage-600"
+                        >
+                    </div>
+
+                    <!-- Product Type Selector Grid -->
+                    <div>
+                        <label class="block text-xs font-semibold text-stone-600 mb-1.5">Product Type *</label>
+                        <input type="hidden" id="pur-type" value="Cleanser">
+                        <div id="pur-type-grid" class="grid grid-cols-2 gap-2">
+                            <!-- Populated by initPurchaseFormUI() -->
+                        </div>
+                    </div>
+
+                    <!-- Mask Sub-Type Division (Shown when Type === 'Mask') -->
+                    <div id="pur-mask-subtype-box" class="hidden bg-terracotta-50/60 border border-terracotta-200/80 rounded-2xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <label class="text-xs font-semibold text-terracotta-700">Mask Division *</label>
+                            <span class="text-[10px] font-semibold text-terracotta-600">Select texture</span>
+                        </div>
+                        <input type="hidden" id="pur-mask-subtype" value="Paper Mask">
+                        <div id="pur-mask-subtype-grid" class="grid grid-cols-3 gap-1.5">
+                            <!-- Populated by renderMaskSubTypeGrid('pur') -->
+                        </div>
+                    </div>
+
+                    <!-- Volume Input (Compulsory except for Mask & Acne Patch) -->
+                    <div>
+                        <div class="flex items-center justify-between mb-1">
+                            <label for="pur-volume" id="pur-volume-label" class="text-xs font-semibold text-stone-600">Volume *</label>
+                            <span id="pur-volume-hint" class="text-[10px] text-stone-400">e.g., 50ml, 100g</span>
+                        </div>
+                        <input
+                            type="text"
+                            id="pur-volume"
+                            required
+                            placeholder="e.g., 50ml, 100g, 30ml"
+                            class="w-full px-3.5 py-2.5 bg-white border border-cream-200 rounded-xl text-sm text-stone-800 placeholder-stone-400 focus:outline-none focus:border-sage-600"
+                        >
+                    </div>
+
+                    <!-- Expiry Date & Quantity Purchased -->
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label for="pur-expiry" class="block text-xs font-semibold text-stone-600 mb-1">Expiry Date *</label>
+                            <input
+                                type="date"
+                                id="pur-expiry"
+                                required
+                                class="w-full px-3 py-2.5 bg-white border border-cream-200 rounded-xl text-xs font-medium text-stone-800 focus:outline-none focus:border-sage-600"
+                            >
+                        </div>
+                        <div>
+                            <label for="pur-qty" class="block text-xs font-semibold text-stone-600 mb-1">Quantity *</label>
+                            <div class="flex items-center bg-white border border-cream-200 rounded-xl overflow-hidden">
+                                <button type="button" onclick="adjustPurchaseQty(-1)" class="w-10 h-10 flex items-center justify-center text-stone-600 hover:bg-cream-100 active:bg-cream-200">
+                                    <i class="ph-bold ph-minus text-xs"></i>
+                                </button>
+                                <input
+                                    type="number"
+                                    id="pur-qty"
+                                    min="1"
+                                    max="99"
+                                    value="1"
+                                    oninput="updatePurchaseUnitPrice()"
+                                    required
+                                    class="w-full text-center text-sm font-bold text-stone-800 focus:outline-none"
+                                >
+                                <button type="button" onclick="adjustPurchaseQty(1)" class="w-10 h-10 flex items-center justify-center text-stone-600 hover:bg-cream-100 active:bg-cream-200">
+                                    <i class="ph-bold ph-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recommended Seasons Selector -->
+                    <div class="bg-white p-3.5 rounded-2xl border border-cream-200 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <label class="text-xs font-semibold text-stone-600">Recommended Seasons</label>
+                            <span id="pur-season-label" class="px-2 py-0.5 rounded-full bg-sage-50 border border-sage-200 text-sage-700 text-[10px] font-bold">Anytime</span>
+                        </div>
+                        <div id="pur-season-grid" class="grid grid-cols-4 gap-1.5">
+                            <!-- Populated by renderSeasonButtons('pur') -->
+                        </div>
+                    </div>
+
+                    <!-- Purchase & Origin Details -->
+                    <div class="bg-white p-3.5 rounded-2xl border border-cream-200 space-y-3">
+                        <div class="text-[11px] font-bold uppercase tracking-wider text-stone-400">Purchase & Origin Details</div>
+                        
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label for="pur-merchant" class="block text-xs font-semibold text-stone-600 mb-1">Merchant / Store</label>
+                                <input
+                                    type="text"
+                                    id="pur-merchant"
+                                    placeholder="e.g., Olive Young, Sasa"
+                                    class="w-full px-3 py-2 bg-alabaster border border-cream-200 rounded-xl text-xs text-stone-800 placeholder-stone-400 focus:outline-none focus:border-sage-600"
+                                >
+                            </div>
+                            <div>
+                                <label for="pur-purchase-date" class="block text-xs font-semibold text-stone-600 mb-1">Purchase Month</label>
+                                <input
+                                    type="month"
+                                    id="pur-purchase-date"
+                                    class="w-full px-3 py-2 bg-alabaster border border-cream-200 rounded-xl text-xs font-medium text-stone-800 focus:outline-none focus:border-sage-600"
+                                >
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label for="pur-total-price" class="block text-xs font-semibold text-stone-600 mb-1">Total Price ($)</label>
+                                <input
+                                    type="number"
+                                    id="pur-total-price"
+                                    min="0"
+                                    step="0.01"
+                                    oninput="updatePurchaseUnitPrice()"
+                                    placeholder="0.00"
+                                    class="w-full px-3 py-2 bg-alabaster border border-cream-200 rounded-xl text-xs font-semibold text-stone-800 placeholder-stone-400 focus:outline-none focus:border-sage-600"
+                                >
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-stone-600 mb-1">Unit Price (Auto)</label>
+                                <div id="pur-unit-price-display" class="w-full px-3 py-2 bg-sage-50/70 border border-sage-200/80 rounded-xl text-xs font-extrabold text-sage-700">
+                                    $0.00 / unit
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="pur-country" class="block text-xs font-semibold text-stone-600 mb-1">Country of Manufacture</label>
+                            <input
+                                type="text"
+                                id="pur-country"
+                                placeholder="e.g., South Korea, France, Japan"
+                                class="w-full px-3 py-2 bg-alabaster border border-cream-200 rounded-xl text-xs text-stone-800 placeholder-stone-400 focus:outline-none focus:border-sage-600"
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Photo Link Input & Live Thumbnail Preview (Bottom of Form) -->
+                    <div class="bg-white p-3.5 rounded-2xl border border-cream-200 shadow-2xs flex items-center gap-3.5">
+                        <div class="w-16 h-16 rounded-2xl bg-cream-100 border border-cream-200 overflow-hidden shrink-0 flex items-center justify-center relative">
+                            <img id="pur-photo-preview" onload="onPreviewLoadSuccess()" onerror="onPreviewLoadError()" class="hidden w-full h-full object-cover" alt="Preview">
+                            <div id="pur-photo-fallback" class="flex flex-col items-center justify-center text-sage-600">
+                                <i class="ph ph-image text-xl"></i>
+                                <span class="text-[9px] font-semibold mt-0.5">Photo</span>
+                            </div>
+                        </div>
+                        <div class="flex-1 min-w-0 space-y-1.5">
+                            <div class="flex items-center justify-between">
+                                <label for="pur-photo-url" class="text-xs font-semibold text-stone-600">Photo Link (URL)</label>
+                                <button type="button" onclick="clearPurchasePhoto()" class="text-[10px] font-semibold text-stone-400 hover:text-terracotta-600">Clear</button>
+                            </div>
+                            <input
+                                type="url"
+                                id="pur-photo-url"
+                                oninput="updatePurchasePhotoPreview(this.value)"
+                                placeholder="https://example.com/product.jpg"
+                                class="w-full px-3 py-2 bg-alabaster border border-cream-200 rounded-xl text-xs text-stone-800 placeholder-stone-400 focus:outline-none focus:border-sage-600"
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="pt-1">
+                        <button type="submit" class="w-full py-3.5 rounded-2xl bg-sage-600 hover:bg-sage-700 text-white font-semibold text-sm shadow-soft flex items-center justify-center gap-2 active:scale-[0.99] transition-all">
+                            <i class="ph-bold ph-check-circle text-lg"></i>
+                            <span>Save to Storage</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- =====================================================================
+             MODAL: EDIT STORED PRODUCT
+             ===================================================================== -->
+        <div id="edit-modal" class="fixed inset-0 z-[60] hidden">
+            <div onclick="closeEditModal()" class="absolute inset-0 bg-stone-900/40 backdrop-blur-xs"></div>
+            <div class="relative z-10 mt-auto w-full max-w-[480px] mx-auto bg-alabaster rounded-t-3xl shadow-2xl border-t border-cream-200 max-h-[90vh] flex flex-col">
+                <div class="px-5 pt-3.5 pb-3 border-b border-cream-200 flex items-center justify-between">
+                    <h3 class="font-serif text-lg font-semibold text-sage-700">Edit Storage Item</h3>
+                    <button type="button" onclick="closeEditModal()" class="w-8 h-8 rounded-full bg-cream-200/80 text-stone-600 flex items-center justify-center">
+                        <i class="ph-bold ph-x text-sm"></i>
+                    </button>
+                </div>
+
+                <form onsubmit="saveEditedProduct(event)" class="p-5 overflow-y-auto space-y-3.5">
+                    <input type="hidden" id="edit-id">
+                    
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-semibold text-stone-600 mb-1">Brand</label>
+                            <input type="text" id="edit-brand" required class="w-full px-3 py-2 bg-white border border-cream-200 rounded-xl text-sm focus:outline-none focus:border-sage-600">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-stone-600 mb-1">Type</label>
+                            <select id="edit-type" onchange="handleEditTypeChange(this.value)" class="w-full px-3 py-2 bg-white border border-cream-200 rounded-xl text-sm focus:outline-none focus:border-sage-600">
+                                <!-- Populated via JS -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Mask Division Selector (Edit) -->
+                    <div id="edit-mask-subtype-box" class="hidden bg-terracotta-50/60 border border-terracotta-200/80 rounded-2xl p-3 space-y-2">
+                        <label class="block text-xs font-semibold text-terracotta-700">Mask Division *</label>
+                        <input type="hidden" id="edit-mask-subtype" value="Paper Mask">
+                        <div id="edit-mask-subtype-grid" class="grid grid-cols-3 gap-1.5">
+                            <!-- Populated by renderMaskSubTypeGrid('edit') -->
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-3">
+                        <div class="col-span-2">
+                            <label class="block text-xs font-semibold text-stone-600 mb-1">Product Name</label>
+                            <input type="text" id="edit-name" required class="w-full px-3 py-2 bg-white border border-cream-200 rounded-xl text-sm focus:outline-none focus:border-sage-600">
+                        </div>
+                        <div>
+                            <label id="edit-volume-label" class="block text-xs font-semibold text-stone-600 mb-1">Volume *</label>
+                            <input type="text" id="edit-volume" placeholder="50ml" required class="w-full px-3 py-2 bg-white border border-cream-200 rounded-xl text-sm focus:outline-none focus:border-sage-600">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-semibold text-stone-600 mb-1">Expiry Date</label>
+                            <input type="date" id="edit-expiry" required class="w-full px-3 py-2 bg-white border border-cream-200 rounded-xl text-xs font-medium focus:outline-none focus:border-sage-600">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-stone-600 mb-1">Remaining Count</label>
+                            <input type="number" id="edit-qty" min="0" max="99" oninput="updateEditUnitPrice()" required class="w-full px-3 py-2 bg-white border border-cream-200 rounded-xl text-sm font-bold focus:outline-none focus:border-sage-600">
+                        </div>
+                    </div>
+
+                    <!-- Recommended Seasons Selector (Edit) -->
+                    <div class="bg-white p-3 rounded-2xl border border-cream-200 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <label class="text-xs font-semibold text-stone-600">Recommended Seasons</label>
+                            <span id="edit-season-label" class="px-2 py-0.5 rounded-full bg-sage-50 border border-sage-200 text-sage-700 text-[10px] font-bold">Anytime</span>
+                        </div>
+                        <div id="edit-season-grid" class="grid grid-cols-4 gap-1.5">
+                            <!-- Populated by renderSeasonButtons('edit') -->
+                        </div>
+                    </div>
+
+                    <!-- Purchase & Origin Details (Edit) -->
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-semibold text-stone-600 mb-1">Merchant / Store</label>
+                            <input type="text" id="edit-merchant" placeholder="e.g., Olive Young" class="w-full px-3 py-2 bg-white border border-cream-200 rounded-xl text-xs focus:outline-none focus:border-sage-600">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-stone-600 mb-1">Purchase Month</label>
+                            <input type="month" id="edit-purchase-date" class="w-full px-3 py-2 bg-white border border-cream-200 rounded-xl text-xs font-medium focus:outline-none focus:border-sage-600">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-semibold text-stone-600 mb-1">Total Price ($)</label>
+                            <input type="number" id="edit-total-price" min="0" step="0.01" oninput="updateEditUnitPrice()" placeholder="0.00" class="w-full px-3 py-2 bg-white border border-cream-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-sage-600">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-stone-600 mb-1">Unit Price (Auto)</label>
+                            <div id="edit-unit-price-display" class="w-full px-3 py-2 bg-sage-50/70 border border-sage-200/80 rounded-xl text-xs font-extrabold text-sage-700">
+                                $0.00 / unit
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-semibold text-stone-600 mb-1">Country of Manufacture</label>
+                            <input type="text" id="edit-country" placeholder="e.g., South Korea" class="w-full px-3 py-2 bg-white border border-cream-200 rounded-xl text-xs focus:outline-none focus:border-sage-600">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-stone-600 mb-1">Photo URL</label>
+                            <input type="url" id="edit-photo" placeholder="https://..." class="w-full px-3 py-2 bg-white border border-cream-200 rounded-xl text-xs focus:outline-none focus:border-sage-600">
+                        </div>
+                    </div>
+
+                    <div class="pt-2 flex gap-2.5">
+                        <button type="button" onclick="deleteProductFromEdit()" class="px-4 py-3 rounded-2xl bg-terracotta-50 text-terracotta-600 font-semibold text-xs hover:bg-terracotta-100 transition-all">
+                            Delete Item
+                        </button>
+                        <button type="submit" class="flex-1 py-3 rounded-2xl bg-sage-600 hover:bg-sage-700 text-white font-semibold text-sm shadow-sm transition-all">
+                            Save Changes
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- =====================================================================
+             MODAL: PRODUCT DETAILS SHEET
+             ===================================================================== -->
+        <div id="detail-modal" class="fixed inset-0 z-50 hidden">
+            <div onclick="closeDetailModal()" class="absolute inset-0 bg-stone-900/40 backdrop-blur-xs"></div>
+            <div class="relative z-10 mt-auto w-full max-w-[480px] mx-auto bg-alabaster rounded-t-3xl shadow-2xl border-t border-cream-200 max-h-[90vh] flex flex-col">
+                <div class="px-5 pt-4 pb-3 border-b border-cream-200 flex items-center justify-between shrink-0">
+                    <div class="flex items-center gap-2">
+                        <span id="detail-type-badge" class="px-2.5 py-0.5 rounded-lg text-xs font-semibold border">Type</span>
+                    </div>
+                    <button type="button" onclick="closeDetailModal()" class="w-8 h-8 rounded-full bg-cream-200/80 text-stone-600 flex items-center justify-center">
+                        <i class="ph-bold ph-x text-sm"></i>
+                    </button>
+                </div>
+
+                <div class="p-5 overflow-y-auto space-y-4">
+                    <!-- Product Header with Large Thumbnail -->
+                    <div class="flex items-center gap-4">
+                        <div class="w-24 h-24 rounded-3xl bg-cream-100 border border-cream-200 overflow-hidden shrink-0 flex items-center justify-center">
+                            <img id="detail-photo" class="hidden w-full h-full object-cover" alt="Product Photo" onerror="this.classList.add('hidden'); document.getElementById('detail-photo-fallback').classList.remove('hidden');">
+                            <div id="detail-photo-fallback" class="w-full h-full flex items-center justify-center text-sage-600 bg-sage-50">
+                                <i id="detail-photo-icon" class="ph-fill ph-plant text-3xl"></i>
+                            </div>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <div id="detail-brand" class="text-xs font-bold uppercase tracking-wider text-stone-400 truncate">Brand</div>
+                            <h3 id="detail-name" class="font-serif text-xl font-semibold text-stone-800 leading-snug mt-0.5">Product Name</h3>
+                            <div class="flex flex-wrap items-center gap-1.5 mt-1.5">
+                                <span id="detail-volume-pill" class="hidden items-center gap-1 px-2.5 py-0.5 rounded-full bg-cream-100 border border-cream-200 text-stone-700 text-[11px] font-semibold">
+                                    <i class="ph-fill ph-drop-half text-xs text-sage-600"></i>
+                                    <span id="detail-volume-text">50ml</span>
+                                </span>
+                                <div id="detail-season-pill" class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-sage-50 border border-sage-200 text-sage-700 text-[11px] font-semibold">
+                                    <i class="ph-fill ph-sun-horizon text-xs"></i>
+                                    <span>Anytime</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Expiry & Remaining Stock Details Grid -->
+                    <div class="grid grid-cols-2 gap-3">
+                        <div id="detail-expiry-box" class="rounded-2xl border p-3.5 space-y-1">
+                            <div class="text-[10px] font-bold uppercase tracking-wider opacity-75">Expiry Date</div>
+                            <div id="detail-expiry-date" class="text-sm font-extrabold">2027-01-01</div>
+                            <div id="detail-expiry-countdown" class="text-xs font-semibold">Expires in 120 days</div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl border border-cream-200 p-3.5 space-y-1">
+                            <div class="text-[10px] font-bold uppercase tracking-wider text-stone-400">In Storage</div>
+                            <div id="detail-qty" class="text-sm font-extrabold text-sage-700">2 units left</div>
+                            <div id="detail-stock-status" class="text-xs font-medium text-stone-500">In stock</div>
+                        </div>
+                    </div>
+
+                    <!-- Extended Purchase & Origin Metadata -->
+                    <div class="bg-white rounded-2xl border border-cream-200 p-3.5 space-y-2.5">
+                        <div class="text-[10px] font-bold uppercase tracking-wider text-stone-400">Purchase & Origin Info</div>
+                        <div class="grid grid-cols-2 gap-2.5 text-xs">
+                            <div>
+                                <span class="text-stone-400 block text-[11px]">Merchant / Store</span>
+                                <span id="detail-merchant" class="font-semibold text-stone-800">—</span>
+                            </div>
+                            <div>
+                                <span class="text-stone-400 block text-[11px]">Purchase Date</span>
+                                <span id="detail-purchase-date" class="font-semibold text-stone-800">—</span>
+                            </div>
+                            <div>
+                                <span class="text-stone-400 block text-[11px]">Unit Price (Total)</span>
+                                <span id="detail-price" class="font-semibold text-sage-700">—</span>
+                            </div>
+                            <div>
+                                <span class="text-stone-400 block text-[11px]">Made In</span>
+                                <span id="detail-country" class="font-semibold text-stone-800">—</span>
+                            </div>
+                        </div>
+
+                        <!-- Merged Purchase History Breakdown (Shown when > 1 purchase) -->
+                        <div id="detail-purchase-history-section" class="hidden pt-2.5 border-t border-cream-200 space-y-2">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-sage-700">Purchase History</span>
+                                <span id="detail-purchase-count-badge" class="px-2 py-0.5 rounded-full bg-sage-50 border border-sage-200 text-sage-700 text-[10px] font-bold">2 purchases</span>
+                            </div>
+                            <div id="detail-purchase-history-list" class="space-y-1.5">
+                                <!-- Populated dynamically -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Detail Modal Actions -->
+                    <div class="pt-1 flex items-center gap-2 relative z-20">
+                        <button type="button" id="detail-edit-btn" onclick="editFromDetailModal()" class="px-3.5 py-3 rounded-2xl bg-white border border-cream-200 hover:bg-cream-100 active:scale-95 text-stone-700 font-semibold text-xs flex items-center justify-center gap-1.5 transition-all cursor-pointer shrink-0">
+                            <i class="ph-bold ph-pencil-simple text-sm pointer-events-none"></i>
+                            <span class="pointer-events-none">Edit</span>
+                        </button>
+                        <button type="button" id="detail-purchase-again-btn" onclick="openPurchaseAgainModal()" class="px-3.5 py-3 rounded-2xl bg-sage-50 hover:bg-sage-100 active:scale-95 text-sage-700 border border-sage-200 font-semibold text-xs flex items-center justify-center gap-1.5 transition-all cursor-pointer shrink-0">
+                            <i class="ph-bold ph-bag-simple text-sm pointer-events-none"></i>
+                            <span class="pointer-events-none">Purchase again</span>
+                        </button>
+                        <button type="button" id="detail-primary-action" class="flex-1 py-3 rounded-2xl bg-sage-600 hover:bg-sage-700 text-white font-semibold text-xs shadow-soft flex items-center justify-center gap-1.5 transition-all">
+                            <i class="ph-bold ph-check text-sm"></i>
+                            <span>Log Use (-1)</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- =====================================================================
+             MODAL: PURCHASE AGAIN (REPEAT BATCH ENTRY)
+             ===================================================================== -->
+        <div id="purchase-again-modal" class="fixed inset-0 z-[65] hidden">
+            <div onclick="closePurchaseAgainModal()" class="absolute inset-0 bg-stone-900/45 backdrop-blur-xs"></div>
+            <div class="relative z-10 mt-auto w-full max-w-[480px] mx-auto bg-alabaster rounded-t-3xl shadow-2xl border-t border-cream-200 max-h-[90vh] flex flex-col">
+                <div class="px-5 pt-4 pb-3 border-b border-cream-200 flex items-center justify-between">
+                    <div class="flex items-center gap-2.5 min-w-0">
+                        <div class="w-8 h-8 rounded-xl bg-sage-100 text-sage-700 flex items-center justify-center shrink-0">
+                            <i class="ph-fill ph-bag-simple text-lg"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <h3 class="font-serif text-lg font-semibold text-sage-700 leading-none">Purchase Again</h3>
+                            <p id="pa-product-subtitle" class="text-[11px] text-stone-500 mt-1 truncate">Add new batch to existing card</p>
+                        </div>
+                    </div>
+                    <button type="button" onclick="closePurchaseAgainModal()" class="w-8 h-8 rounded-full bg-cream-200/80 text-stone-600 flex items-center justify-center shrink-0">
+                        <i class="ph-bold ph-x text-sm"></i>
+                    </button>
+                </div>
+
+                <form id="purchase-again-form" onsubmit="handlePurchaseAgainSubmit(event)" class="p-5 overflow-y-auto space-y-4">
+                    <input type="hidden" id="pa-product-id">
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label for="pa-merchant" class="block text-xs font-semibold text-stone-600 mb-1">Merchant / Store</label>
+                            <input
+                                type="text"
+                                id="pa-merchant"
+                                placeholder="e.g., Olive Young, Sasa"
+                                class="w-full px-3 py-2.5 bg-white border border-cream-200 rounded-xl text-xs text-stone-800 placeholder-stone-400 focus:outline-none focus:border-sage-600"
+                            >
+                        </div>
+                        <div>
+                            <label for="pa-purchase-date" class="block text-xs font-semibold text-stone-600 mb-1">Purchase Date *</label>
+                            <input
+                                type="month"
+                                id="pa-purchase-date"
+                                required
+                                class="w-full px-3 py-2.5 bg-white border border-cream-200 rounded-xl text-xs font-medium text-stone-800 focus:outline-none focus:border-sage-600"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label for="pa-expiry" class="block text-xs font-semibold text-stone-600 mb-1">New Batch Expiry *</label>
+                            <input
+                                type="date"
+                                id="pa-expiry"
+                                required
+                                class="w-full px-3 py-2.5 bg-white border border-cream-200 rounded-xl text-xs font-medium text-stone-800 focus:outline-none focus:border-sage-600"
+                            >
+                        </div>
+                        <div>
+                            <label for="pa-qty" class="block text-xs font-semibold text-stone-600 mb-1">New Quantity *</label>
+                            <div class="flex items-center bg-white border border-cream-200 rounded-xl overflow-hidden">
+                                <button type="button" onclick="adjustPurchaseAgainQty(-1)" class="w-10 h-10 flex items-center justify-center text-stone-600 hover:bg-cream-100 active:bg-cream-200">
+                                    <i class="ph-bold ph-minus text-xs"></i>
+                                </button>
+                                <input
+                                    type="number"
+                                    id="pa-qty"
+                                    min="1"
+                                    max="99"
+                                    value="1"
+                                    oninput="updatePurchaseAgainUnitPrice()"
+                                    required
+                                    class="w-full text-center text-sm font-bold text-stone-800 focus:outline-none"
+                                >
+                                <button type="button" onclick="adjustPurchaseAgainQty(1)" class="w-10 h-10 flex items-center justify-center text-stone-600 hover:bg-cream-100 active:bg-cream-200">
+                                    <i class="ph-bold ph-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label for="pa-total-price" class="block text-xs font-semibold text-stone-600 mb-1">Total Price ($)</label>
+                            <input
+                                type="number"
+                                id="pa-total-price"
+                                min="0"
+                                step="0.01"
+                                oninput="updatePurchaseAgainUnitPrice()"
+                                placeholder="0.00"
+                                class="w-full px-3 py-2.5 bg-white border border-cream-200 rounded-xl text-xs font-semibold text-stone-800 placeholder-stone-400 focus:outline-none focus:border-sage-600"
+                            >
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-stone-600 mb-1">Unit Price (Auto)</label>
+                            <div id="pa-unit-price-display" class="w-full px-3 py-2.5 bg-sage-50/70 border border-sage-200/80 rounded-xl text-xs font-extrabold text-sage-700">
+                                $0.00 / unit
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-1">
+                        <button type="submit" class="w-full py-3.5 rounded-2xl bg-sage-600 hover:bg-sage-700 text-white font-semibold text-sm shadow-soft flex items-center justify-center gap-2 active:scale-[0.99] transition-all">
+                            <i class="ph-bold ph-plus-circle text-lg"></i>
+                            <span>Add Purchase & Update Stock</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- =====================================================================
+             MODAL: FINISHED PRODUCT RESTOCK PROMPT
+             ===================================================================== -->
+        <div id="restock-prompt-modal" class="fixed inset-0 z-[70] hidden flex items-center justify-center p-4">
+            <div onclick="resolveRestockPrompt(true)" class="absolute inset-0 bg-stone-900/50 backdrop-blur-xs"></div>
+            <div class="relative z-10 w-full max-w-[360px] bg-alabaster rounded-3xl shadow-2xl border border-cream-200 p-5 space-y-4 text-center">
+                <div class="w-12 h-12 rounded-2xl bg-sage-100 text-sage-700 mx-auto flex items-center justify-center">
+                    <i class="ph-fill ph-arrows-clockwise text-2xl"></i>
+                </div>
+                <div class="space-y-1">
+                    <h3 class="font-serif text-lg font-semibold text-stone-800">Product Finished!</h3>
+                    <p id="restock-prompt-message" class="text-xs text-stone-500 leading-relaxed">
+                        Do you need to restock this product?
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-2.5 pt-1">
+                    <button type="button" onclick="resolveRestockPrompt(false)" class="py-3 px-3 rounded-2xl bg-terracotta-50 hover:bg-terracotta-100 text-terracotta-600 font-semibold text-xs border border-terracotta-200/80 transition-all active:scale-95">
+                        No, Delete
+                    </button>
+                    <button type="button" onclick="resolveRestockPrompt(true)" class="py-3 px-3 rounded-2xl bg-sage-600 hover:bg-sage-700 text-white font-semibold text-xs shadow-2xs transition-all active:scale-95">
+                        Yes, Keep (0)
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- =====================================================================
+             TOAST NOTIFICATION WITH OPTIONAL UNDO BUTTON
+             ===================================================================== -->
+        <div id="toast-bar" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-[440px] pointer-events-none opacity-0 translate-y-3 transition-all duration-300">
+            <div class="bg-stone-800/95 text-cream-50 px-4 py-3 rounded-2xl shadow-xl backdrop-blur-md flex items-center justify-between gap-3 pointer-events-auto">
+                <div class="flex items-center gap-2 min-w-0">
+                    <i class="ph-fill ph-check-circle text-sage-400 text-lg shrink-0"></i>
+                    <span id="toast-text" class="text-xs font-medium truncate">Usage logged</span>
+                </div>
+                <button id="toast-undo-btn" onclick="undoLastUsage()" class="hidden px-2.5 py-1 rounded-lg bg-terracotta-500 hover:bg-terracotta-600 text-white text-xs font-bold shrink-0 active:scale-95 transition-all">
+                    Undo
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- =====================================================================
+         APPLICATION SCRIPT
+         ===================================================================== -->
+    <script>
+        const STORAGE_PRODUCTS_KEY = 'botanica_skincare_products_v3';
+
+        // Product Types Metadata (Ordered with clean neutral styling)
+        const PRODUCT_TYPES = [
+            { name: 'Cleanser',           icon: 'ph-drop',        badge: 'bg-cream-100/80 text-stone-600 border-cream-200' },
+            { name: 'Peeling',            icon: 'ph-eraser',      badge: 'bg-cream-100/80 text-stone-600 border-cream-200' },
+            { name: 'Toner',              icon: 'ph-waves',       badge: 'bg-cream-100/80 text-stone-600 border-cream-200' },
+            { name: 'Serum',              icon: 'ph-eyedropper',  badge: 'bg-cream-100/80 text-stone-600 border-cream-200' },
+            { name: 'Moisturizer',        icon: 'ph-jar',         badge: 'bg-cream-100/80 text-stone-600 border-cream-200' },
+            { name: 'Eye Cream',          icon: 'ph-eye',         badge: 'bg-cream-100/80 text-stone-600 border-cream-200' },
+            { name: 'All-in-one Essence', icon: 'ph-sparkle',     badge: 'bg-cream-100/80 text-stone-600 border-cream-200' },
+            { name: 'Sunscreen',          icon: 'ph-sun',         badge: 'bg-cream-100/80 text-stone-600 border-cream-200' },
+            { name: 'Mask',               icon: 'ph-mask-happy',  badge: 'bg-cream-100/80 text-stone-600 border-cream-200' },
+            { name: 'Lip Treatment',      icon: 'ph-smiley',      badge: 'bg-cream-100/80 text-stone-600 border-cream-200' },
+            { name: 'Acne Patch',         icon: 'ph-bandaids',    badge: 'bg-cream-100/80 text-stone-600 border-cream-200' }
+        ];
+
+        // Mask Sub-Type Divisions
+        const MASK_SUBTYPES = ['Paper Mask', 'Gel Mask', 'Cream Mask'];
+
+        // Four Seasons Metadata
+        const SEASONS = [
+            { id: 'Spring', label: 'Spring', icon: 'ph-flower-lotus' },
+            { id: 'Summer', label: 'Summer', icon: 'ph-sun' },
+            { id: 'Autumn', label: 'Autumn', icon: 'ph-leaf' },
+            { id: 'Winter', label: 'Winter', icon: 'ph-snowflake' }
+        ];
+
+        // Application State
+        let state = {
+            products: [],
+            storageTypeFilter: 'ALL',
+            storageSearch: '',
+            storageSort: 'NEWEST', // 'NEWEST' | 'EXPIRY' | 'QUANTITY'
+            typeDrawerOpen: false,
+            lastUndoAction: null
+        };
+
+        let purSeasons = ['Spring', 'Summer', 'Autumn', 'Winter'];
+        let editSeasons = ['Spring', 'Summer', 'Autumn', 'Winter'];
+        let activeDetailProductId = null;
+        let activeStatsDrilldown = null;
+        let pendingRestockProductId = null;
+        let toastTimeout = null;
+
+        // Utility Helpers
+        function escapeHtml(str) {
+            if (str === null || str === undefined) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function getTypeMeta(typeName) {
+            return PRODUCT_TYPES.find(t => t.name === typeName) || {
+                name: typeName || 'Skincare',
+                icon: 'ph-plant',
+                badge: 'bg-cream-100/80 text-stone-600 border-cream-200'
+            };
+        }
+
+        function isVolumeRequired(typeName) {
+            return typeName !== 'Mask' && typeName !== 'Acne Patch';
+        }
+
+        function isStatusTrackedItem(item) {
+            if (!item) return false;
+            if (item.type === 'Acne Patch') return false;
+            if (item.type === 'Mask' && (!item.maskSubType || item.maskSubType === 'Paper Mask')) return false;
+            return true;
+        }
+
+        function isVolumeIgnoredForMerge(type, maskSubType) {
+            if (type === 'Acne Patch') return true;
+            if (type === 'Mask' && (!maskSubType || maskSubType === 'Paper Mask')) return true;
+            return false;
+        }
+
+        function normalizeMergeKey(brand, name, type, maskSubType, volume) {
+            const normBrand = String(brand || '').trim().toLowerCase();
+            const normName = String(name || '').trim().toLowerCase();
+            const ignoreVol = isVolumeIgnoredForMerge(type, maskSubType);
+            const normVol = ignoreVol ? '' : String(volume || '').trim().toLowerCase().replace(/\s+/g, '');
+            const normMaskSub = type === 'Mask' ? String(maskSubType || 'Paper Mask').trim().toLowerCase() : '';
+            return `${normBrand}|${normName}|${normMaskSub}|${normVol}`;
+        }
+
+        function getPurchaseHistoryEntries(item) {
+            if (Array.isArray(item.purchaseHistory) && item.purchaseHistory.length > 0) {
+                return item.purchaseHistory;
+            }
+            const qty = Math.max(1, Number(item.initialQty) || Number(item.quantity) || 1);
+            return [{
+                merchant: item.merchant || '',
+                purchaseDate: item.purchaseDate || '',
+                quantity: qty,
+                totalPrice: item.totalPrice !== null && item.totalPrice !== undefined ? Number(item.totalPrice) : null,
+                expiryDate: item.expiryDate || ''
+            }];
+        }
+
+        function formatSeasonSummary(seasonsArr) {
+            if (!Array.isArray(seasonsArr) || seasonsArr.length === 0 || seasonsArr.length === 4) {
+                return 'Anytime';
+            }
+            return seasonsArr.join(' · ');
+        }
+
+        function formatPurchaseMonth(ym) {
+            if (!ym || !/^\d{4}-\d{2}$/.test(ym)) return '—';
+            const [year, month] = ym.split('-');
+            const date = new Date(Number(year), Number(month) - 1, 1);
+            return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+        }
+
+        function evaluateExpiry(expiryStr) {
+            if (!expiryStr) {
+                return {
+                    status: 'UNKNOWN',
+                    daysLeft: null,
+                    label: 'No expiry',
+                    detailText: 'Expiry date not set',
+                    badgeClass: 'bg-cream-100 text-stone-500 border-cream-200',
+                    detailBoxClass: 'bg-white border-cream-200 text-stone-700'
+                };
+            }
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const parts = expiryStr.split('-').map(Number);
+            const expDate = new Date(parts[0], (parts[1] || 1) - 1, parts[2] || 1);
+            expDate.setHours(0, 0, 0, 0);
+            const diffDays = Math.round((expDate - today) / (1000 * 60 * 60 * 24));
+
+            if (diffDays < 0) {
+                return {
+                    status: 'EXPIRED',
+                    daysLeft: diffDays,
+                    label: `Exp ${expiryStr}`,
+                    detailText: `Expired ${Math.abs(diffDays)} day${Math.abs(diffDays) === 1 ? '' : 's'} ago`,
+                    badgeClass: 'bg-terracotta-50/70 text-terracotta-500 border-terracotta-200/70',
+                    detailBoxClass: 'bg-terracotta-50/60 border-terracotta-200/70 text-terracotta-600'
+                };
+            }
+            if (diffDays <= 60) {
+                return {
+                    status: 'EXPIRING_SOON',
+                    daysLeft: diffDays,
+                    label: `Exp ${expiryStr}`,
+                    detailText: diffDays === 0 ? 'Expires today' : `Expires in ${diffDays} day${diffDays === 1 ? '' : 's'}`,
+                    badgeClass: 'bg-amber-50 text-amber-700 border-amber-200',
+                    detailBoxClass: 'bg-amber-50/80 border-amber-200 text-amber-800'
+                };
+            }
+            return {
+                status: 'FRESH',
+                daysLeft: diffDays,
+                label: `Exp ${expiryStr}`,
+                detailText: `Expires in ${diffDays} days`,
+                badgeClass: 'bg-sage-50 text-sage-700 border-sage-200',
+                detailBoxClass: 'bg-sage-50/70 border-sage-200 text-sage-700'
+            };
+        }
+
+        function offsetDateStr(daysOffset) {
+            const d = new Date();
+            d.setDate(d.getDate() + daysOffset);
+            const y = d.getFullYear();
+            const m = String(d.getMonth() + 1).padStart(2, '0');
+            const day = String(d.getDate()).padStart(2, '0');
+            return `${y}-${m}-${day}`;
+        }
+
+        function currentMonthStr() {
+            const d = new Date();
+            return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+        }
+
+        function getDefaultSeedData() {
+            const now = Date.now();
+            return [
+                {
+                    id: 'seed-1',
+                    brand: 'Skin1004',
+                    name: 'Madagascar Centella Ampoule',
+                    type: 'Serum',
+                    volume: '100ml',
+                    expiryDate: offsetDateStr(240),
+                    quantity: 2,
+                    initialQty: 2,
+                    totalPrice: 32.00,
+                    merchant: 'Olive Young',
+                    purchaseDate: currentMonthStr(),
+                    country: 'South Korea',
+                    seasons: ['Spring', 'Summer', 'Autumn', 'Winter'],
+                    isBrandNew: true,
+                    liked: false,
+                    photoUrl: '',
+                    createdAt: now - 1000
+                },
+                {
+                    id: 'seed-2',
+                    brand: 'La Roche-Posay',
+                    name: 'Cicaplast Baume B5+',
+                    type: 'Moisturizer',
+                    volume: '40ml',
+                    expiryDate: offsetDateStr(38),
+                    quantity: 1,
+                    initialQty: 1,
+                    totalPrice: 18.50,
+                    merchant: 'Watsons',
+                    purchaseDate: currentMonthStr(),
+                    country: 'France',
+                    seasons: ['Autumn', 'Winter'],
+                    isBrandNew: false,
+                    liked: false,
+                    photoUrl: '',
+                    createdAt: now - 2000
+                },
+                {
+                    id: 'seed-3',
+                    brand: 'Mediheal',
+                    name: 'Teatree Essential Mask',
+                    type: 'Mask',
+                    maskSubType: 'Paper Mask',
+                    volume: '24ml × 5',
+                    expiryDate: offsetDateStr(310),
+                    quantity: 3,
+                    initialQty: 5,
+                    totalPrice: 15.00,
+                    merchant: 'Sasa',
+                    purchaseDate: currentMonthStr(),
+                    country: 'South Korea',
+                    seasons: ['Spring', 'Summer'],
+                    isBrandNew: false,
+                    liked: false,
+                    photoUrl: '',
+                    createdAt: now - 3000
+                },
+                {
+                    id: 'seed-4',
+                    brand: 'Beauty of Joseon',
+                    name: 'Relief Sun : Rice + Probiotics',
+                    type: 'Sunscreen',
+                    volume: '50ml',
+                    expiryDate: offsetDateStr(180),
+                    quantity: 0,
+                    initialQty: 1,
+                    totalPrice: 14.00,
+                    merchant: 'YesStyle',
+                    purchaseDate: currentMonthStr(),
+                    country: 'South Korea',
+                    seasons: ['Spring', 'Summer', 'Autumn', 'Winter'],
+                    isBrandNew: false,
+                    liked: true,
+                    photoUrl: '',
+                    createdAt: now - 4000
+                }
+            ];
+        }
+
+        function saveState() {
+            try {
+                localStorage.setItem(STORAGE_PRODUCTS_KEY, JSON.stringify(state.products));
+            } catch (err) {
+                console.warn('Could not persist storage state:', err);
+            }
+        }
+
+        function loadState() {
+            try {
+                const raw = localStorage.getItem(STORAGE_PRODUCTS_KEY);
+                if (raw) {
+                    const parsed = JSON.parse(raw);
+                    if (Array.isArray(parsed)) {
+                        state.products = parsed;
+                        return;
+                    }
+                }
+            } catch (err) {
+                console.warn('Failed to load stored products:', err);
+            }
+            state.products = getDefaultSeedData();
+            saveState();
+        }
+
+        // Overview Metrics & Filter Controls
+        function updateOverviewMetrics() {
+            const totalEl = document.getElementById('metric-total-entries');
+            if (totalEl) {
+                const inStoreCount = state.products.filter(p => (Number(p.quantity) || 0) > 0).length;
+                totalEl.textContent = inStoreCount;
+            }
+        }
+
+        function setStorageTypeFilter(type) {
+            state.storageTypeFilter = type;
+            const labelEl = document.getElementById('type-filter-btn-label');
+            const toggleBtn = document.getElementById('type-filter-toggle-btn');
+            if (type === 'ALL') {
+                if (labelEl) labelEl.textContent = 'Filter';
+                if (toggleBtn) {
+                    toggleBtn.className = 'py-2.5 px-4 rounded-2xl text-xs font-semibold bg-white text-stone-600 border border-cream-200 hover:bg-cream-100 flex items-center justify-center gap-1.5 shrink-0 transition-all';
+                }
+            } else {
+                if (labelEl) labelEl.textContent = type;
+                if (toggleBtn) {
+                    toggleBtn.className = 'py-2.5 px-4 rounded-2xl text-xs font-semibold bg-sage-50 text-sage-700 border border-sage-300 flex items-center justify-center gap-1.5 shrink-0 transition-all';
+                }
+            }
+            renderTypeFilterPills();
+            renderStorageView();
+        }
+
+        function toggleTypeFilterDrawer() {
+            state.typeDrawerOpen = !state.typeDrawerOpen;
+            const drawer = document.getElementById('type-filter-drawer');
+            if (drawer) {
+                drawer.classList.toggle('hidden', !state.typeDrawerOpen);
+            }
+        }
+
+        function renderTypeFilterPills() {
+            const container = document.getElementById('type-pills');
+            if (!container) return;
+            const allTypes = ['ALL', ...PRODUCT_TYPES.map(t => t.name)];
+            container.innerHTML = allTypes.map(type => {
+                const isSelected = state.storageTypeFilter === type;
+                const label = type === 'ALL' ? 'All Types' : type;
+                const cls = isSelected
+                    ? 'bg-sage-600 text-white border-sage-600 shadow-2xs'
+                    : 'bg-alabaster text-stone-600 border-cream-200 hover:bg-cream-100';
+                return `<button type="button" onclick="setStorageTypeFilter('${escapeHtml(type)}')" class="px-2.5 py-1.5 rounded-xl text-xs font-semibold border transition-all ${cls}">${escapeHtml(label)}</button>`;
+            }).join('');
+        }
+
+        function handleStorageSearch(val) {
+            state.storageSearch = val.trim();
+            const clearBtn = document.getElementById('storage-clear-search');
+            if (clearBtn) {
+                clearBtn.classList.toggle('hidden', state.storageSearch.length === 0);
+            }
+            renderStorageView();
+        }
+
+        function clearStorageSearch() {
+            state.storageSearch = '';
+            const input = document.getElementById('storage-search');
+            const clearBtn = document.getElementById('storage-clear-search');
+            if (input) input.value = '';
+            if (clearBtn) clearBtn.classList.add('hidden');
+            renderStorageView();
+        }
+
+        function toggleStorageSort() {
+            const sortOrder = ['NEWEST', 'EXPIRY', 'QUANTITY'];
+            const nextIndex = (sortOrder.indexOf(state.storageSort) + 1) % sortOrder.length;
+            state.storageSort = sortOrder[nextIndex];
+
+            const labels = {
+                NEWEST: 'Newest',
+                EXPIRY: 'Expiry Soonest',
+                QUANTITY: 'Most Quantity'
+            };
+
+            const labelEl = document.getElementById('storage-sort-label');
+            if (labelEl) {
+                labelEl.textContent = labels[state.storageSort];
+            }
+            renderStorageView();
+        }
+
+        function applyQuickFilter() {
+            state.storageTypeFilter = 'ALL';
+            const labelEl = document.getElementById('type-filter-btn-label');
+            const toggleBtn = document.getElementById('type-filter-toggle-btn');
+            if (labelEl) labelEl.textContent = 'Filter';
+            if (toggleBtn) {
+                toggleBtn.className = 'py-2.5 px-4 rounded-2xl text-xs font-semibold bg-white text-stone-600 border border-cream-200 hover:bg-cream-100 flex items-center justify-center gap-1.5 shrink-0 transition-all';
+            }
+            clearStorageSearch();
+            renderTypeFilterPills();
+            renderStorageView();
+        }
+
+        function resetStorageFilters() {
+            applyQuickFilter();
+        }
+
+        function renderStorageView() {
+            const listEl = document.getElementById('storage-list');
+            const countLabel = document.getElementById('storage-count-label');
+            const resetBtn = document.getElementById('storage-reset-btn');
+            if (!listEl) return;
+
+            const query = state.storageSearch.toLowerCase();
+            const hasActiveFilters = state.storageTypeFilter !== 'ALL' || query.length > 0;
+            if (resetBtn) {
+                resetBtn.classList.toggle('hidden', !hasActiveFilters);
+            }
+
+            let filtered = state.products.filter(item => {
+                if (state.storageTypeFilter !== 'ALL' && item.type !== state.storageTypeFilter) return false;
+                if (query) {
+                    const hay = `${item.brand} ${item.name} ${item.type} ${item.maskSubType || ''} ${item.merchant || ''}`.toLowerCase();
+                    if (!hay.includes(query)) return false;
+                }
+                return true;
+            });
+
+            filtered.sort((a, b) => {
+                if (state.storageSort === 'EXPIRY') {
+                    const expA = a.expiryDate || '9999-12-31';
+                    const expB = b.expiryDate || '9999-12-31';
+                    if (expA !== expB) return expA.localeCompare(expB);
+                } else if (state.storageSort === 'QUANTITY') {
+                    const qtyA = Number(a.quantity) || 0;
+                    const qtyB = Number(b.quantity) || 0;
+                    if (qtyA !== qtyB) return qtyB - qtyA;
+                }
+                const purA = a.purchaseDate || '';
+                const purB = b.purchaseDate || '';
+                if (purA !== purB) return purB.localeCompare(purA);
+                return (b.createdAt || 0) - (a.createdAt || 0);
+            });
+
+            if (countLabel) {
+                countLabel.textContent = 'Storage List';
+            }
+
+            if (filtered.length === 0) {
+                listEl.innerHTML = `
+                    <div class="bg-white rounded-3xl border border-cream-200 p-8 text-center space-y-2 shadow-card">
+                        <div class="w-12 h-12 rounded-2xl bg-sage-50 text-sage-600 mx-auto flex items-center justify-center">
+                            <i class="ph ph-plant text-2xl"></i>
+                        </div>
+                        <h4 class="font-serif text-base font-semibold text-stone-700">No products found</h4>
+                        <p class="text-xs text-stone-500">Try clearing filters or add a new purchase into storage.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            listEl.innerHTML = filtered.map(item => {
+                const meta = getTypeMeta(item.type);
+                const exp = evaluateExpiry(item.expiryDate);
+                const isFinished = item.quantity <= 0;
+                const displayType = item.type === 'Mask' && item.maskSubType ? item.maskSubType : item.type;
+                const showBrandNew = !isFinished && isStatusTrackedItem(item) && item.isBrandNew;
+
+                const photoHtml = item.photoUrl
+                    ? `<img src="${escapeHtml(item.photoUrl)}" alt="${escapeHtml(item.name)}" onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');" class="w-full h-full object-cover">
+                       <div class="hidden w-full h-full flex items-center justify-center bg-sage-50 text-sage-600"><i class="ph-fill ${meta.icon} text-2xl"></i></div>`
+                    : `<div class="w-full h-full flex items-center justify-center bg-sage-50 text-sage-600"><i class="ph-fill ${meta.icon} text-2xl"></i></div>`;
+
+                const actionArea = isFinished
+                    ? `<button type="button" onclick="event.stopPropagation(); restockFromStorage('${item.id}')" class="px-3 py-1.5 rounded-xl bg-sage-50 hover:bg-sage-100 text-sage-700 border border-sage-200 text-xs font-semibold transition-all">
+                           +1 Restock
+                       </button>`
+                    : `<button type="button" onclick="event.stopPropagation(); logProductUsage('${item.id}')" class="px-3 py-1.5 rounded-xl bg-sage-600 hover:bg-sage-700 text-white text-xs font-semibold shadow-2xs active:scale-95 transition-all">
+                           Log Use (-1)
+                       </button>`;
+
+                const cardStateClass = isFinished
+                    ? 'bg-cream-50/80 border-cream-200/80 opacity-65 hover:opacity-90'
+                    : 'bg-white border-cream-200 hover:border-sage-300';
+
+                return `
+                    <div onclick="openDetailModal('${item.id}')" class="rounded-2xl border p-3.5 shadow-card transition-all cursor-pointer flex items-center gap-3.5 ${cardStateClass}">
+                        <!-- Thumbnail -->
+                        <div class="w-16 h-16 rounded-2xl bg-cream-100 border border-cream-200 overflow-hidden shrink-0 relative ${isFinished ? 'grayscale-[40%]' : ''}">
+                            ${photoHtml}
+                            ${showBrandNew ? `<span class="absolute top-0 left-0 px-1.5 py-0.5 bg-sage-600 text-white text-[9px] font-extrabold tracking-wider rounded-br-lg shadow-2xs">NEW</span>` : ''}
+                        </div>
+
+                        <!-- Info -->
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center gap-1.5 flex-wrap">
+                                <span class="text-[11px] font-bold uppercase tracking-wider text-stone-400 truncate max-w-[130px]">${escapeHtml(item.brand)}</span>
+                                <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold border ${meta.badge}">${escapeHtml(displayType)}</span>
+                            </div>
+                            <h4 class="font-semibold text-sm text-stone-800 truncate mt-0.5">${escapeHtml(item.name)}</h4>
+                            <div class="flex items-center gap-2 mt-1.5 flex-wrap">
+                                <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold border ${exp.badgeClass}">${exp.label}</span>
+                                <span class="text-xs font-bold ${isFinished ? 'text-amber-700' : 'text-sage-700'}">${isFinished ? '0 left · Restock' : `${item.quantity} left`}</span>
+                            </div>
+                        </div>
+
+                        <!-- Quick Action -->
+                        <div class="shrink-0">
+                            ${actionArea}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Usage Logging, Restock Prompt, Undo, Restock & Like Actions
+        function logProductUsage(id) {
+            const item = state.products.find(p => String(p.id) === String(id));
+            if (!item || item.quantity <= 0) return;
+
+            const prevQty = item.quantity;
+            const prevBrandNew = item.isBrandNew;
+            item.quantity -= 1;
+            if (isStatusTrackedItem(item)) {
+                item.isBrandNew = false;
+            }
+
+            state.lastUndoAction = {
+                id: item.id,
+                prevQty,
+                prevBrandNew
+            };
+
+            saveState();
+            renderAll();
+
+            if (item.quantity === 0) {
+                openRestockPrompt(item);
+            } else {
+                showToast(`Used 1 × ${item.name} (${item.quantity} left)`, true);
+            }
+        }
+
+        function openRestockPrompt(item) {
+            pendingRestockProductId = item.id;
+            const msgEl = document.getElementById('restock-prompt-message');
+            if (msgEl) {
+                msgEl.textContent = `"${item.brand} ${item.name}" has reached 0 left. Do you need to restock it?`;
+            }
+            const modal = document.getElementById('restock-prompt-modal');
+            if (modal) {
+                modal.classList.remove('hidden');
+            }
+        }
+
+        function resolveRestockPrompt(keepInList) {
+            const modal = document.getElementById('restock-prompt-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+            }
+            if (!pendingRestockProductId) return;
+
+            const idx = state.products.findIndex(p => String(p.id) === String(pendingRestockProductId));
+            const targetItem = idx !== -1 ? state.products[idx] : null;
+            pendingRestockProductId = null;
+
+            if (!targetItem) return;
+
+            if (keepInList) {
+                saveState();
+                renderAll();
+                showToast(`Kept ${targetItem.name} in list (0 left)`, true);
+            } else {
+                state.products.splice(idx, 1);
+                state.lastUndoAction = null;
+                saveState();
+                if (activeDetailProductId === targetItem.id) {
+                    closeDetailModal();
+                }
+                renderAll();
+                showToast(`Removed ${targetItem.name} from storage`, false);
+            }
+        }
+
+        function undoLastUsage() {
+            if (!state.lastUndoAction) return;
+            const { id, prevQty, prevBrandNew } = state.lastUndoAction;
+            const item = state.products.find(p => String(p.id) === String(id));
+            if (item) {
+                item.quantity = prevQty;
+                item.isBrandNew = prevBrandNew;
+                saveState();
+                renderAll();
+                showToast(`Restored ${item.name} to ${item.quantity} left`, false);
+            }
+            state.lastUndoAction = null;
+        }
+
+        function restockFromStorage(id) {
+            const item = state.products.find(p => String(p.id) === String(id));
+            if (!item) return;
+            item.quantity += 1;
+            if (isStatusTrackedItem(item)) {
+                item.isBrandNew = true;
+            }
+            saveState();
+            renderAll();
+            showToast(`Restocked +1 × ${item.name}`, false);
+        }
+
+        // New Purchase Modal & Form Helpers
+        function initPurchaseFormUI() {
+            const grid = document.getElementById('pur-type-grid');
+            const selectedType = document.getElementById('pur-type')?.value || 'Cleanser';
+            if (grid) {
+                grid.innerHTML = PRODUCT_TYPES.map(t => {
+                    const active = t.name === selectedType;
+                    return `
+                        <button type="button" onclick="selectPurchaseType('${escapeHtml(t.name)}')" class="px-3 py-2 rounded-xl border text-left text-xs font-semibold flex items-center gap-2 transition-all ${active ? 'bg-sage-600 text-white border-sage-600 shadow-2xs' : 'bg-white text-stone-700 border-cream-200 hover:bg-cream-100'}">
+                            <i class="ph-fill ${t.icon} text-sm shrink-0"></i>
+                            <span class="truncate">${escapeHtml(t.name)}</span>
+                        </button>
+                    `;
+                }).join('');
+            }
+            renderMaskSubTypeGrid('pur');
+            renderSeasonButtons('pur');
+            updateVolumeFieldRequirement('pur', selectedType);
+        }
+
+        function selectPurchaseType(typeName) {
+            const hiddenInput = document.getElementById('pur-type');
+            if (hiddenInput) hiddenInput.value = typeName;
+            const maskBox = document.getElementById('pur-mask-subtype-box');
+            if (maskBox) {
+                maskBox.classList.toggle('hidden', typeName !== 'Mask');
+            }
+            updateVolumeFieldRequirement('pur', typeName);
+            initPurchaseFormUI();
+        }
+
+        function updateVolumeFieldRequirement(prefix, typeName) {
+            const required = isVolumeRequired(typeName);
+            const labelEl = document.getElementById(`${prefix}-volume-label`);
+            const inputEl = document.getElementById(`${prefix}-volume`);
+            if (labelEl) {
+                labelEl.textContent = required ? 'Volume *' : 'Volume (Optional)';
+            }
+            if (inputEl) {
+                inputEl.required = required;
+            }
+        }
+
+        function renderMaskSubTypeGrid(prefix) {
+            const grid = document.getElementById(`${prefix}-mask-subtype-grid`);
+            const hiddenInput = document.getElementById(`${prefix}-mask-subtype`);
+            if (!grid || !hiddenInput) return;
+            const currentVal = hiddenInput.value || 'Paper Mask';
+            grid.innerHTML = MASK_SUBTYPES.map(sub => {
+                const active = sub === currentVal;
+                return `
+                    <button type="button" onclick="selectMaskSubType('${prefix}', '${escapeHtml(sub)}')" class="py-2 px-2 rounded-xl border text-[11px] font-semibold transition-all ${active ? 'bg-terracotta-500 text-white border-terracotta-500 shadow-2xs' : 'bg-white text-stone-600 border-terracotta-200/70 hover:bg-terracotta-50'}">
+                        ${escapeHtml(sub)}
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function selectMaskSubType(prefix, subType) {
+            const hiddenInput = document.getElementById(`${prefix}-mask-subtype`);
+            if (hiddenInput) hiddenInput.value = subType;
+            renderMaskSubTypeGrid(prefix);
+        }
+
+        function renderSeasonButtons(prefix) {
+            const grid = document.getElementById(`${prefix}-season-grid`);
+            const labelEl = document.getElementById(`${prefix}-season-label`);
+            const selectedArr = prefix === 'pur' ? purSeasons : editSeasons;
+            if (labelEl) {
+                labelEl.textContent = formatSeasonSummary(selectedArr);
+            }
+            if (!grid) return;
+            grid.innerHTML = SEASONS.map(s => {
+                const isSelected = selectedArr.includes(s.id);
+                return `
+                    <button type="button" onclick="toggleSeasonSelection('${prefix}', '${s.id}')" class="py-2 px-1.5 rounded-xl border text-[11px] font-semibold flex flex-col items-center justify-center gap-1 transition-all ${isSelected ? 'bg-sage-600 text-white border-sage-600 shadow-2xs' : 'bg-alabaster text-stone-500 border-cream-200 hover:bg-cream-100'}">
+                        <i class="ph-fill ${s.icon} text-sm"></i>
+                        <span>${s.label}</span>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function toggleSeasonSelection(prefix, seasonId) {
+            let arr = prefix === 'pur' ? purSeasons : editSeasons;
+            if (arr.includes(seasonId)) {
+                arr = arr.filter(id => id !== seasonId);
+                if (arr.length === 0) {
+                    arr = ['Spring', 'Summer', 'Autumn', 'Winter'];
+                }
+            } else {
+                arr = [...arr, seasonId];
+            }
+            if (prefix === 'pur') {
+                purSeasons = arr;
+            } else {
+                editSeasons = arr;
+            }
+            renderSeasonButtons(prefix);
+        }
+
+        function adjustPurchaseQty(delta) {
+            const input = document.getElementById('pur-qty');
+            if (!input) return;
+            const next = Math.max(1, Math.min(99, (parseInt(input.value, 10) || 1) + delta));
+            input.value = next;
+            updatePurchaseUnitPrice();
+        }
+
+        function updatePurchaseUnitPrice() {
+            const total = parseFloat(document.getElementById('pur-total-price')?.value) || 0;
+            const qty = Math.max(1, parseInt(document.getElementById('pur-qty')?.value, 10) || 1);
+            const display = document.getElementById('pur-unit-price-display');
+            if (display) {
+                display.textContent = `$${(total / qty).toFixed(2)} / unit`;
+            }
+        }
+
+        function updatePurchasePhotoPreview(url) {
+            const img = document.getElementById('pur-photo-preview');
+            const fallback = document.getElementById('pur-photo-fallback');
+            const trimmed = (url || '').trim();
+            if (!trimmed) {
+                if (img) {
+                    img.src = '';
+                    img.classList.add('hidden');
+                }
+                if (fallback) fallback.classList.remove('hidden');
+                return;
+            }
+            if (img) {
+                img.src = trimmed;
+            }
+        }
+
+        function onPreviewLoadSuccess() {
+            const img = document.getElementById('pur-photo-preview');
+            const fallback = document.getElementById('pur-photo-fallback');
+            if (img) img.classList.remove('hidden');
+            if (fallback) fallback.classList.add('hidden');
+        }
+
+        function onPreviewLoadError() {
+            const img = document.getElementById('pur-photo-preview');
+            const fallback = document.getElementById('pur-photo-fallback');
+            if (img) img.classList.add('hidden');
+            if (fallback) fallback.classList.remove('hidden');
+        }
+
+        function clearPurchasePhoto() {
+            const input = document.getElementById('pur-photo-url');
+            if (input) input.value = '';
+            updatePurchasePhotoPreview('');
+        }
+
+        function openPurchaseModal() {
+            const form = document.getElementById('purchase-form');
+            if (form) form.reset();
+            document.getElementById('pur-type').value = 'Cleanser';
+            document.getElementById('pur-mask-subtype').value = 'Paper Mask';
+            document.getElementById('pur-mask-subtype-box').classList.add('hidden');
+            document.getElementById('pur-qty').value = 1;
+            document.getElementById('pur-expiry').value = offsetDateStr(365);
+            document.getElementById('pur-purchase-date').value = currentMonthStr();
+            purSeasons = ['Spring', 'Summer', 'Autumn', 'Winter'];
+            clearPurchasePhoto();
+            updatePurchaseUnitPrice();
+            initPurchaseFormUI();
+            document.getElementById('purchase-modal').classList.remove('hidden');
+        }
+
+        function closePurchaseModal() {
+            document.getElementById('purchase-modal').classList.add('hidden');
+        }
+
+        function handleNewPurchaseSubmit(event) {
+            event.preventDefault();
+            const brand = document.getElementById('pur-brand').value.trim();
+            const name = document.getElementById('pur-name').value.trim();
+            const type = document.getElementById('pur-type').value;
+            const maskSubType = type === 'Mask' ? document.getElementById('pur-mask-subtype').value : '';
+            const volume = document.getElementById('pur-volume').value.trim();
+            const expiryDate = document.getElementById('pur-expiry').value;
+            const quantity = Math.max(1, parseInt(document.getElementById('pur-qty').value, 10) || 1);
+            const merchant = document.getElementById('pur-merchant').value.trim();
+            const purchaseDate = document.getElementById('pur-purchase-date').value;
+            const totalPriceVal = parseFloat(document.getElementById('pur-total-price').value);
+            const totalPrice = isNaN(totalPriceVal) ? null : totalPriceVal;
+            const country = document.getElementById('pur-country').value.trim();
+            const photoUrl = document.getElementById('pur-photo-url').value.trim();
+
+            if (!brand || !name) return;
+
+            const newBatch = {
+                merchant,
+                purchaseDate,
+                quantity,
+                totalPrice,
+                expiryDate
+            };
+
+            const incomingKey = normalizeMergeKey(brand, name, type, maskSubType, volume);
+            const existingItem = state.products.find(p =>
+                normalizeMergeKey(p.brand, p.name, p.type, p.maskSubType, p.volume) === incomingKey
+            );
+
+            if (existingItem) {
+                const history = [...getPurchaseHistoryEntries(existingItem), newBatch];
+                existingItem.purchaseHistory = history;
+                existingItem.quantity = (Number(existingItem.quantity) || 0) + quantity;
+                existingItem.initialQty = (Number(existingItem.initialQty) || 0) + quantity;
+
+                // Keep earliest upcoming expiry date
+                if (expiryDate && (!existingItem.expiryDate || expiryDate < existingItem.expiryDate)) {
+                    existingItem.expiryDate = expiryDate;
+                }
+                // Update latest purchase metadata & optional fields if missing
+                if (purchaseDate && (!existingItem.purchaseDate || purchaseDate >= existingItem.purchaseDate)) {
+                    existingItem.purchaseDate = purchaseDate;
+                }
+                if (merchant) existingItem.merchant = merchant;
+                if (country && !existingItem.country) existingItem.country = country;
+                if (photoUrl && !existingItem.photoUrl) existingItem.photoUrl = photoUrl;
+                if (!isVolumeIgnoredForMerge(type, maskSubType) && volume && !existingItem.volume) {
+                    existingItem.volume = volume;
+                }
+                if (totalPrice !== null) {
+                    existingItem.totalPrice = (Number(existingItem.totalPrice) || 0) + totalPrice;
+                }
+                if (isStatusTrackedItem(existingItem) && existingItem.quantity === quantity) {
+                    existingItem.isBrandNew = true;
+                }
+                existingItem.createdAt = Date.now();
+
+                saveState();
+                closePurchaseModal();
+                renderAll();
+                showToast(`Merged +${quantity} into ${existingItem.brand} ${existingItem.name} (${existingItem.quantity} left)`, false);
+                return;
+            }
+
+            const newItem = {
+                id: 'item-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6),
+                brand,
+                name,
+                type,
+                maskSubType,
+                volume,
+                expiryDate,
+                quantity,
+                initialQty: quantity,
+                merchant,
+                purchaseDate,
+                totalPrice,
+                purchaseHistory: [newBatch],
+                country,
+                seasons: [...purSeasons],
+                isBrandNew: isStatusTrackedItem({ type, maskSubType }),
+                liked: false,
+                photoUrl,
+                createdAt: Date.now()
+            };
+
+            state.products.unshift(newItem);
+            saveState();
+            closePurchaseModal();
+            renderAll();
+            showToast(`Added ${brand} ${name} to storage`, false);
+        }
+
+        // Edit Modal Handlers
+        function populateEditTypeSelect(selectedType) {
+            const sel = document.getElementById('edit-type');
+            if (!sel) return;
+            sel.innerHTML = PRODUCT_TYPES.map(t =>
+                `<option value="${escapeHtml(t.name)}" ${t.name === selectedType ? 'selected' : ''}>${escapeHtml(t.name)}</option>`
+            ).join('');
+        }
+
+        function handleEditTypeChange(typeName) {
+            const maskBox = document.getElementById('edit-mask-subtype-box');
+            if (maskBox) {
+                maskBox.classList.toggle('hidden', typeName !== 'Mask');
+            }
+            updateVolumeFieldRequirement('edit', typeName);
+            renderMaskSubTypeGrid('edit');
+        }
+
+        function updateEditUnitPrice() {
+            const total = parseFloat(document.getElementById('edit-total-price')?.value) || 0;
+            const qty = Math.max(1, parseInt(document.getElementById('edit-qty')?.value, 10) || 1);
+            const display = document.getElementById('edit-unit-price-display');
+            if (display) {
+                display.textContent = `$${(total / qty).toFixed(2)} / unit`;
+            }
+        }
+
+        function openEditModal(productId) {
+            const targetId = productId || activeDetailProductId;
+            const item = state.products.find(p => String(p.id) === String(targetId));
+            if (!item) return;
+
+            document.getElementById('edit-id').value = item.id;
+            document.getElementById('edit-brand').value = item.brand || '';
+            populateEditTypeSelect(item.type);
+            document.getElementById('edit-mask-subtype').value = item.maskSubType || 'Paper Mask';
+            handleEditTypeChange(item.type);
+
+            document.getElementById('edit-name').value = item.name || '';
+            document.getElementById('edit-volume').value = item.volume || '';
+            document.getElementById('edit-expiry').value = item.expiryDate || '';
+            document.getElementById('edit-qty').value = item.quantity;
+            document.getElementById('edit-merchant').value = item.merchant || '';
+            document.getElementById('edit-purchase-date').value = item.purchaseDate || '';
+            document.getElementById('edit-total-price').value = item.totalPrice !== null && item.totalPrice !== undefined ? item.totalPrice : '';
+            document.getElementById('edit-country').value = item.country || '';
+            document.getElementById('edit-photo').value = item.photoUrl || '';
+
+            editSeasons = Array.isArray(item.seasons) && item.seasons.length > 0
+                ? [...item.seasons]
+                : ['Spring', 'Summer', 'Autumn', 'Winter'];
+            renderSeasonButtons('edit');
+            updateEditUnitPrice();
+
+            document.getElementById('edit-modal').classList.remove('hidden');
+        }
+
+        function closeEditModal() {
+            document.getElementById('edit-modal').classList.add('hidden');
+        }
+
+        function saveEditedProduct(event) {
+            event.preventDefault();
+            const id = document.getElementById('edit-id').value;
+            const item = state.products.find(p => String(p.id) === String(id));
+            if (!item) return;
+
+            item.brand = document.getElementById('edit-brand').value.trim();
+            item.type = document.getElementById('edit-type').value;
+            item.maskSubType = item.type === 'Mask' ? document.getElementById('edit-mask-subtype').value : '';
+            item.name = document.getElementById('edit-name').value.trim();
+            item.volume = document.getElementById('edit-volume').value.trim();
+            item.expiryDate = document.getElementById('edit-expiry').value;
+            item.quantity = Math.max(0, parseInt(document.getElementById('edit-qty').value, 10) || 0);
+            item.merchant = document.getElementById('edit-merchant').value.trim();
+            item.purchaseDate = document.getElementById('edit-purchase-date').value;
+            const totalPriceVal = parseFloat(document.getElementById('edit-total-price').value);
+            item.totalPrice = isNaN(totalPriceVal) ? null : totalPriceVal;
+            item.country = document.getElementById('edit-country').value.trim();
+            item.photoUrl = document.getElementById('edit-photo').value.trim();
+            item.seasons = [...editSeasons];
+
+            if (!Array.isArray(item.purchaseHistory) || item.purchaseHistory.length <= 1) {
+                item.purchaseHistory = [{
+                    merchant: item.merchant,
+                    purchaseDate: item.purchaseDate,
+                    quantity: Math.max(1, Number(item.initialQty) || Number(item.quantity) || 1),
+                    totalPrice: item.totalPrice,
+                    expiryDate: item.expiryDate
+                }];
+            }
+
+            saveState();
+            closeEditModal();
+            renderAll();
+            if (item.quantity === 0) {
+                openRestockPrompt(item);
+            } else {
+                showToast(`Updated ${item.name}`, false);
+            }
+        }
+
+        function deleteProductFromEdit() {
+            const id = document.getElementById('edit-id').value;
+            const idx = state.products.findIndex(p => String(p.id) === String(id));
+            if (idx === -1) return;
+            const removed = state.products.splice(idx, 1)[0];
+            saveState();
+            closeEditModal();
+            if (activeDetailProductId === id) {
+                closeDetailModal();
+            }
+            renderAll();
+            showToast(`Deleted ${removed.name}`, false);
+        }
+
+        // Product Details Sheet
+        function openDetailModal(productId) {
+            const item = state.products.find(p => String(p.id) === String(productId));
+            if (!item) return;
+            activeDetailProductId = item.id;
+
+            const meta = getTypeMeta(item.type);
+            const exp = evaluateExpiry(item.expiryDate);
+            const displayType = item.type === 'Mask' && item.maskSubType ? item.maskSubType : item.type;
+
+            const typeBadge = document.getElementById('detail-type-badge');
+            typeBadge.textContent = displayType;
+            typeBadge.className = `px-2.5 py-0.5 rounded-lg text-xs font-semibold border ${meta.badge}`;
+
+            const photoImg = document.getElementById('detail-photo');
+            const photoFallback = document.getElementById('detail-photo-fallback');
+            const photoIcon = document.getElementById('detail-photo-icon');
+            photoIcon.className = `ph-fill ${meta.icon} text-3xl`;
+            if (item.photoUrl) {
+                photoImg.src = item.photoUrl;
+                photoImg.classList.remove('hidden');
+                photoFallback.classList.add('hidden');
+            } else {
+                photoImg.classList.add('hidden');
+                photoFallback.classList.remove('hidden');
+            }
+
+            document.getElementById('detail-brand').textContent = item.brand;
+            document.getElementById('detail-name').textContent = item.name;
+
+            const volPill = document.getElementById('detail-volume-pill');
+            if (item.volume) {
+                document.getElementById('detail-volume-text').textContent = item.volume;
+                volPill.classList.remove('hidden');
+                volPill.classList.add('inline-flex');
+            } else {
+                volPill.classList.add('hidden');
+                volPill.classList.remove('inline-flex');
+            }
+
+            const seasonPill = document.getElementById('detail-season-pill');
+            seasonPill.innerHTML = `<i class="ph-fill ph-sun-horizon text-xs"></i><span>${escapeHtml(formatSeasonSummary(item.seasons))}</span>`;
+
+            const expBox = document.getElementById('detail-expiry-box');
+            expBox.className = `rounded-2xl border p-3.5 space-y-1 ${exp.detailBoxClass}`;
+            document.getElementById('detail-expiry-date').textContent = item.expiryDate || 'Not set';
+            document.getElementById('detail-expiry-countdown').textContent = exp.detailText;
+
+            document.getElementById('detail-qty').textContent = `${item.quantity} ${item.quantity === 1 ? 'unit' : 'units'} left`;
+            const stockStatusEl = document.getElementById('detail-stock-status');
+            if (item.quantity <= 0) {
+                stockStatusEl.textContent = 'Finished · Needs restock';
+            } else if (isStatusTrackedItem(item) && item.isBrandNew) {
+                stockStatusEl.textContent = 'Brand New (Unopened)';
+            } else {
+                stockStatusEl.textContent = 'In storage';
+            }
+
+            document.getElementById('detail-merchant').textContent = item.merchant || '—';
+            document.getElementById('detail-purchase-date').textContent = formatPurchaseMonth(item.purchaseDate);
+
+            const history = getPurchaseHistoryEntries(item);
+            const historySection = document.getElementById('detail-purchase-history-section');
+            const historyListEl = document.getElementById('detail-purchase-history-list');
+            const historyBadgeEl = document.getElementById('detail-purchase-count-badge');
+
+            const priceEl = document.getElementById('detail-price');
+            if (history.length > 1) {
+                const uniqueMerchants = [...new Set(history.map(h => h.merchant).filter(Boolean))];
+                document.getElementById('detail-merchant').textContent = uniqueMerchants.length > 0 ? uniqueMerchants.join(', ') : '—';
+
+                const datedEntries = history.map(h => h.purchaseDate).filter(Boolean).sort();
+                if (datedEntries.length > 0) {
+                    const firstDate = formatPurchaseMonth(datedEntries[0]);
+                    const lastDate = formatPurchaseMonth(datedEntries[datedEntries.length - 1]);
+                    document.getElementById('detail-purchase-date').textContent = firstDate === lastDate ? lastDate : `${firstDate} – ${lastDate}`;
+                }
+
+                const pricedEntries = history.filter(h => h.totalPrice !== null && h.totalPrice !== undefined && h.totalPrice > 0);
+                if (pricedEntries.length > 0) {
+                    const sumSpent = pricedEntries.reduce((s, h) => s + Number(h.totalPrice), 0);
+                    const sumQty = pricedEntries.reduce((s, h) => s + Math.max(1, Number(h.quantity) || 1), 0);
+                    priceEl.textContent = `Avg $${(sumSpent / sumQty).toFixed(2)} ($${sumSpent.toFixed(2)} total)`;
+                } else {
+                    priceEl.textContent = '—';
+                }
+
+                historySection.classList.remove('hidden');
+                historyBadgeEl.textContent = `${history.length} purchases`;
+                historyListEl.innerHTML = [...history].reverse().map((entry, idx) => {
+                    const entryQty = Math.max(1, Number(entry.quantity) || 1);
+                    const hasPrice = entry.totalPrice !== null && entry.totalPrice !== undefined && entry.totalPrice > 0;
+                    const unitStr = hasPrice ? `$${(Number(entry.totalPrice) / entryQty).toFixed(2)}/ea` : 'No price';
+                    const totalStr = hasPrice ? ` ($${Number(entry.totalPrice).toFixed(2)})` : '';
+                    const storeLabel = entry.merchant ? escapeHtml(entry.merchant) : 'Unknown Store';
+                    const dateLabel = formatPurchaseMonth(entry.purchaseDate);
+                    const expStr = entry.expiryDate ? ` · Exp ${escapeHtml(entry.expiryDate)}` : '';
+
+                    return `
+                        <div class="p-2.5 rounded-xl bg-alabaster border border-cream-200 flex items-center justify-between gap-2 text-xs">
+                            <div class="min-w-0">
+                                <div class="font-semibold text-stone-800 truncate">${storeLabel}</div>
+                                <div class="text-[11px] text-stone-500">${dateLabel} · Qty ${entryQty}${expStr}</div>
+                            </div>
+                            <div class="text-right shrink-0">
+                                <div class="font-bold text-sage-700">${unitStr}</div>
+                                ${totalStr ? `<div class="text-[10px] text-stone-400">${totalStr}</div>` : ''}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            } else {
+                historySection.classList.add('hidden');
+                if (item.totalPrice !== null && item.totalPrice !== undefined && item.totalPrice > 0) {
+                    const denom = Math.max(1, item.initialQty || item.quantity || 1);
+                    const unitPrice = item.totalPrice / denom;
+                    priceEl.textContent = `$${unitPrice.toFixed(2)} ($${Number(item.totalPrice).toFixed(2)})`;
+                } else {
+                    priceEl.textContent = '—';
+                }
+            }
+
+            document.getElementById('detail-country').textContent = item.country || '—';
+
+            const editBtn = document.getElementById('detail-edit-btn');
+            if (editBtn) {
+                editBtn.setAttribute('data-product-id', item.id);
+                editBtn.onclick = () => editFromDetailModal(item.id);
+            }
+
+            const purchaseAgainBtn = document.getElementById('detail-purchase-again-btn');
+            if (purchaseAgainBtn) {
+                purchaseAgainBtn.setAttribute('data-product-id', item.id);
+                purchaseAgainBtn.onclick = () => openPurchaseAgainModal(item.id);
+            }
+
+            const primaryBtn = document.getElementById('detail-primary-action');
+            if (item.quantity > 0) {
+                primaryBtn.innerHTML = `<i class="ph-bold ph-check text-sm"></i><span>Log Use (-1)</span>`;
+                primaryBtn.onclick = () => {
+                    const willFinish = item.quantity === 1;
+                    logProductUsage(item.id);
+                    if (willFinish) {
+                        closeDetailModal();
+                    } else {
+                        openDetailModal(item.id);
+                    }
+                };
+            } else {
+                primaryBtn.innerHTML = `<i class="ph-bold ph-plus text-sm"></i><span>Restock (+1)</span>`;
+                primaryBtn.onclick = () => {
+                    restockFromStorage(item.id);
+                    openDetailModal(item.id);
+                };
+            }
+
+            document.getElementById('detail-modal').classList.remove('hidden');
+        }
+
+        function closeDetailModal() {
+            document.getElementById('detail-modal').classList.add('hidden');
+        }
+
+        function editFromDetailModal(explicitId) {
+            const btnId = document.getElementById('detail-edit-btn')?.getAttribute('data-product-id');
+            const targetId = explicitId || btnId || activeDetailProductId;
+            if (!targetId) return;
+            closeDetailModal();
+            openEditModal(targetId);
+        }
+
+        // Purchase Again Modal & Submission
+        function adjustPurchaseAgainQty(delta) {
+            const input = document.getElementById('pa-qty');
+            if (!input) return;
+            const next = Math.max(1, Math.min(99, (parseInt(input.value, 10) || 1) + delta));
+            input.value = next;
+            updatePurchaseAgainUnitPrice();
+        }
+
+        function updatePurchaseAgainUnitPrice() {
+            const total = parseFloat(document.getElementById('pa-total-price')?.value) || 0;
+            const qty = Math.max(1, parseInt(document.getElementById('pa-qty')?.value, 10) || 1);
+            const display = document.getElementById('pa-unit-price-display');
+            if (display) {
+                display.textContent = `$${(total / qty).toFixed(2)} / unit`;
+            }
+        }
+
+        function openPurchaseAgainModal(explicitId) {
+            const btnId = document.getElementById('detail-purchase-again-btn')?.getAttribute('data-product-id');
+            const targetId = explicitId || btnId || activeDetailProductId;
+            const item = state.products.find(p => String(p.id) === String(targetId));
+            if (!item) return;
+
+            document.getElementById('pa-product-id').value = item.id;
+            document.getElementById('pa-product-subtitle').textContent = `${item.brand} • ${item.name}`;
+            document.getElementById('pa-merchant').value = item.merchant || '';
+            document.getElementById('pa-purchase-date').value = currentMonthStr();
+            document.getElementById('pa-expiry').value = offsetDateStr(365);
+            document.getElementById('pa-qty').value = 1;
+            document.getElementById('pa-total-price').value = '';
+            updatePurchaseAgainUnitPrice();
+
+            document.getElementById('purchase-again-modal').classList.remove('hidden');
+        }
+
+        function closePurchaseAgainModal() {
+            document.getElementById('purchase-again-modal').classList.add('hidden');
+        }
+
+        function handlePurchaseAgainSubmit(event) {
+            event.preventDefault();
+            const productId = document.getElementById('pa-product-id').value;
+            const item = state.products.find(p => String(p.id) === String(productId));
+            if (!item) return;
+
+            const merchant = document.getElementById('pa-merchant').value.trim();
+            const purchaseDate = document.getElementById('pa-purchase-date').value;
+            const expiryDate = document.getElementById('pa-expiry').value;
+            const quantity = Math.max(1, parseInt(document.getElementById('pa-qty').value, 10) || 1);
+            const totalPriceVal = parseFloat(document.getElementById('pa-total-price').value);
+            const totalPrice = isNaN(totalPriceVal) ? null : totalPriceVal;
+
+            const newBatch = {
+                merchant,
+                purchaseDate,
+                quantity,
+                totalPrice,
+                expiryDate
+            };
+
+            const wasOutOfStock = (Number(item.quantity) || 0) <= 0;
+            item.purchaseHistory = [...getPurchaseHistoryEntries(item), newBatch];
+            item.quantity = (Number(item.quantity) || 0) + quantity;
+            item.initialQty = (Number(item.initialQty) || 0) + quantity;
+
+            if (expiryDate && (!item.expiryDate || expiryDate < item.expiryDate)) {
+                item.expiryDate = expiryDate;
+            }
+            if (purchaseDate && (!item.purchaseDate || purchaseDate >= item.purchaseDate)) {
+                item.purchaseDate = purchaseDate;
+            }
+            if (merchant) {
+                item.merchant = merchant;
+            }
+            if (totalPrice !== null) {
+                item.totalPrice = (Number(item.totalPrice) || 0) + totalPrice;
+            }
+            if (wasOutOfStock && isStatusTrackedItem(item)) {
+                item.isBrandNew = true;
+            }
+            item.createdAt = Date.now();
+
+            saveState();
+            closePurchaseAgainModal();
+            renderAll();
+            openDetailModal(item.id);
+            showToast(`Added +${quantity} to ${item.name} (${item.quantity} left)`, false);
+        }
+
+        // Storage Statistics Modal
+        function openStatsModal() {
+            activeStatsDrilldown = null;
+            renderStatsModal();
+            document.getElementById('stats-modal').classList.remove('hidden');
+        }
+
+        function closeStatsModal() {
+            document.getElementById('stats-modal').classList.add('hidden');
+        }
+
+        function selectStatsDrilldown(mode) {
+            activeStatsDrilldown = activeStatsDrilldown === mode ? null : mode;
+            renderStatsModal();
+        }
+
+        function renderStatsModal() {
+            const expiringItems = state.products.filter(p => {
+                if (p.quantity <= 0) return false;
+                const exp = evaluateExpiry(p.expiryDate);
+                return exp.status === 'EXPIRING_SOON' || exp.status === 'EXPIRED';
+            });
+
+            document.getElementById('stats-expiring-total').textContent = expiringItems.length;
+
+            const expCard = document.getElementById('stats-card-expiring');
+            expCard.classList.toggle('ring-2', activeStatsDrilldown === 'EXPIRING');
+            expCard.classList.toggle('ring-amber-400', activeStatsDrilldown === 'EXPIRING');
+
+            const drillPanel = document.getElementById('stats-drilldown-panel');
+            const drillTitle = document.getElementById('stats-drilldown-title');
+            const drillList = document.getElementById('stats-drilldown-list');
+
+            if (activeStatsDrilldown === 'EXPIRING') {
+                drillPanel.classList.remove('hidden');
+                drillTitle.textContent = `Expiring Soon & Expired (${expiringItems.length})`;
+
+                if (expiringItems.length === 0) {
+                    drillList.innerHTML = `<p class="text-xs text-stone-400 py-2 text-center">No matching products right now.</p>`;
+                } else {
+                    drillList.innerHTML = expiringItems.map(item => {
+                        const exp = evaluateExpiry(item.expiryDate);
+                        return `
+                            <div onclick="closeStatsModal(); openDetailModal('${item.id}')" class="p-2.5 rounded-xl bg-alabaster border border-cream-200 hover:border-sage-400 flex items-center justify-between gap-2 cursor-pointer transition-all">
+                                <div class="min-w-0">
+                                    <div class="text-[10px] font-bold uppercase text-stone-400 truncate">${escapeHtml(item.brand)}</div>
+                                    <div class="text-xs font-semibold text-stone-800 truncate">${escapeHtml(item.name)}</div>
+                                </div>
+                                <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold border shrink-0 ${exp.badgeClass}">
+                                    ${exp.label}
+                                </span>
+                            </div>
+                        `;
+                    }).join('');
+                }
+            } else {
+                drillPanel.classList.add('hidden');
+            }
+
+            const totalUnits = state.products.reduce((sum, p) => sum + Math.max(0, p.quantity), 0);
+            document.getElementById('stats-grand-total').textContent = `${totalUnits} total ${totalUnits === 1 ? 'unit' : 'units'}`;
+
+            const breakdownEl = document.getElementById('stats-type-breakdown');
+            breakdownEl.innerHTML = PRODUCT_TYPES.map(t => {
+                const matching = state.products.filter(p => p.type === t.name && p.quantity > 0);
+                const units = matching.reduce((sum, p) => sum + p.quantity, 0);
+                const pct = totalUnits > 0 ? Math.round((units / totalUnits) * 100) : 0;
+                return `
+                    <div class="space-y-1">
+                        <div class="flex items-center justify-between text-xs">
+                            <span class="flex items-center gap-1.5 font-semibold text-stone-700">
+                                <i class="ph-fill ${t.icon} text-sage-600"></i>
+                                <span>${escapeHtml(t.name)}</span>
+                            </span>
+                            <span class="font-bold text-stone-600">${units} <span class="text-[10px] font-normal text-stone-400">(${matching.length} items)</span></span>
+                        </div>
+                        <div class="w-full h-1.5 rounded-full bg-cream-100 overflow-hidden">
+                            <div class="h-full rounded-full bg-sage-500 transition-all duration-300" style="width: ${pct}%"></div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Backup & Restore (JSON Export / Import)
+        function openSettingsModal() {
+            const countBadge = document.getElementById('backup-item-count');
+            if (countBadge) {
+                countBadge.textContent = `${state.products.length} ${state.products.length === 1 ? 'item' : 'items'}`;
+            }
+            document.getElementById('settings-modal').classList.remove('hidden');
+        }
+
+        function closeSettingsModal() {
+            document.getElementById('settings-modal').classList.add('hidden');
+        }
+
+        function exportStorageJSON() {
+            try {
+                const payload = {
+                    app: 'Skincare Shelf',
+                    exportedAt: new Date().toISOString(),
+                    products: state.products
+                };
+                const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                const todayStr = new Date().toISOString().slice(0, 10);
+                a.href = url;
+                a.download = `skincare-shelf-backup-${todayStr}.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                showToast('Downloaded JSON backup', false);
+            } catch (err) {
+                showToast('Failed to export JSON backup', false);
+            }
+        }
+
+        function triggerImportJSON() {
+            const input = document.getElementById('json-upload-input');
+            if (input) {
+                input.value = '';
+                input.click();
+            }
+        }
+
+        function handleImportStorageJSON(event) {
+            const file = event.target.files?.[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const parsed = JSON.parse(e.target.result);
+                    const importedList = Array.isArray(parsed) ? parsed : parsed?.products;
+                    if (!Array.isArray(importedList)) {
+                        throw new Error('Invalid JSON structure');
+                    }
+                    state.products = importedList;
+                    saveState();
+                    closeSettingsModal();
+                    renderAll();
+                    showToast(`Restored ${importedList.length} products from JSON`, false);
+                } catch (err) {
+                    showToast('Invalid JSON backup file', false);
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function resetDemoData() {
+            state.products = getDefaultSeedData();
+            saveState();
+            closeSettingsModal();
+            renderAll();
+            showToast('Restored sample demo items', false);
+        }
+
+        // Home Screen Icon & PWA Manifest Generator
+        function generateHomeScreenIcons() {
+            try {
+                const svgMarkup = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="#FAF7F2"/><path d="M92 54 H238 L220 398 H110 Z" fill="#A2B36E"/><path d="M92 54 H238 L236 86 H94 Z" fill="#F4E7DA"/><rect x="124" y="118" width="82" height="44" rx="4" fill="#F4E7DA"/><rect x="132" y="184" width="66" height="18" rx="9" fill="#F4E7DA"/><path d="M110 398 H220 L218 452 H112 Z" fill="#F4E7DA"/><path d="M144 452 V434 C144 426 150 420 158 420 H172 C180 420 186 426 186 434 V452 Z" fill="#99AA65"/><path d="M112 452 H218 C218 468 205 480 189 480 H141 C125 480 112 468 112 452 Z" fill="#ACBD78"/><path d="M206 284 C206 254 226 238 258 234 C290 230 326 218 344 198 C378 214 396 244 396 284 Z" fill="#F4E7DA"/><rect x="206" y="284" width="190" height="26" fill="#EEAC22"/><path d="M186 334 C186 318 198 310 214 310 H388 C404 310 416 318 416 334 V340 H186 Z" fill="#DF9D19"/><rect x="186" y="340" width="230" height="108" fill="#EEAC22"/><ellipse cx="301" cy="394" rx="48" ry="23" fill="#F4E7DA"/><path d="M186 448 H416 C416 467 401 480 382 480 H220 C201 480 186 467 186 448 Z" fill="#DF9D19"/></svg>`;
+                const svgUrl = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgMarkup);
+                const img = new Image();
+                img.onload = function() {
+                    const renderPng = (size) => {
+                        const canvas = document.createElement('canvas');
+                        canvas.width = size;
+                        canvas.height = size;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, size, size);
+                        return canvas.toDataURL('image/png');
+                    };
+                    const png180 = renderPng(180);
+                    const png192 = renderPng(192);
+                    const png512 = renderPng(512);
+
+                    const appleIcon = document.getElementById('apple-touch-icon');
+                    const favPng = document.getElementById('app-favicon-png');
+                    if (appleIcon) appleIcon.href = png180;
+                    if (favPng) favPng.href = png192;
+
+                    const manifest = {
+                        name: 'Skincare Shelf',
+                        short_name: 'Skincare',
+                        start_url: '.',
+                        display: 'standalone',
+                        background_color: '#FAF7F2',
+                        theme_color: '#FAF7F2',
+                        icons: [
+                            { src: png192, sizes: '192x192', type: 'image/png' },
+                            { src: png512, sizes: '512x512', type: 'image/png' }
+                        ]
+                    };
+                    const manifestEl = document.getElementById('app-manifest');
+                    if (manifestEl) {
+                        manifestEl.href = 'data:application/manifest+json;charset=utf-8,' + encodeURIComponent(JSON.stringify(manifest));
+                    }
+                };
+                img.src = svgUrl;
+            } catch (err) {
+                console.warn('Home screen icon setup skipped:', err);
+            }
+        }
+
+        // Toast Notification
+        function showToast(message, showUndo) {
+            const bar = document.getElementById('toast-bar');
+            const textEl = document.getElementById('toast-text');
+            const undoBtn = document.getElementById('toast-undo-btn');
+            if (!bar || !textEl || !undoBtn) return;
+
+            textEl.textContent = message;
+            undoBtn.classList.toggle('hidden', !showUndo);
+            bar.classList.remove('opacity-0', 'translate-y-3', 'pointer-events-none');
+
+            if (toastTimeout) clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                bar.classList.add('opacity-0', 'translate-y-3', 'pointer-events-none');
+            }, 3600);
+        }
+
+        // Master Render & Initialization
+        function renderAll() {
+            updateOverviewMetrics();
+            renderTypeFilterPills();
+            renderStorageView();
+        }
+
+        window.onload = function() {
+            loadState();
+            initPurchaseFormUI();
+            generateHomeScreenIcons();
+            renderAll();
+        };
+    </script>
+</body>
+</html>
